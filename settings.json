@@ -1,0 +1,25 @@
+// Place your settings in this file to overwrite the default settings
+{
+
+// Editor
+
+    "editor.fontFamily": "Office Code Pro D",
+    "editor.renderWhitespace": "boundary",
+    "editor.cursorStyle": "block",
+    "editor.rulers": [80, 125],
+    "editor.cursorBlinking": "phase",
+    "terminal.external.osxExec": "Hyper.app",
+    "html.suggest.angular1": false,
+    "html.suggest.ionic": false,
+    "window.zoomLevel": 0,
+    "workbench.activityBar.visible": false,
+    "git.confirmSync": false,
+    "workbench.statusBar.visible": false,
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "editor.lineNumbers": "relative",
+    "editor.renderLineHighlight": "gutter",
+    "terminal.integrated.cursorBlinking": true,
+    "indenticator.style": "dotted",
+    "window.reopenFolders": "all",
+    "workbench.editor.tabCloseButton": "off"
+}
