@@ -1,0 +1,39 @@
+{
+	"auto_complete_commit_on_tab": true,
+	"caret_extra_bottom": 1,
+	"caret_extra_top": 1,
+	"caret_extra_width": 1,
+	"caret_style": "phase",
+	"close_windows_when_empty": true,
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Palenight.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
+	"font_face": "Fira Code",
+	"font_size": 12,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 2,
+	"margin": 0,
+	"material_theme_accent_cyan": true,
+	"material_theme_contrast_mode": true,
+	"material_theme_disable_tree_indicator": true,
+	"material_theme_small_statusbar": true,
+	"rulers":
+	[
+		80,
+		120
+	],
+	"scroll_speed": 1.32,
+	"show_line_endings": true,
+	"show_tab_close_buttons": false,
+	"theme": "Material-Theme-Palenight.sublime-theme",
+	"trim_trailing_white_space_on_save": true
+}
