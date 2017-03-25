@@ -1,0 +1,30 @@
+{
+    "workbench.colorTheme": "Material",
+    "workbench.iconTheme": "material-icon-theme",
+    "[cpp]": {
+        "editor.quickSuggestions": false
+    },
+    "[c]": {
+        "editor.quickSuggestions": false
+    },
+    "editor.fontFamily": "'Fira Code', monospace",
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.lineNumbers": "relative",
+    // "editor.minimap.enabled": true,
+    "editor.cursorBlinking": "expand",
+    "editor.fontLigatures": true,
+    "vim.easymotion": true,
+    "files.insertFinalNewline": true,
+    "workbench.activityBar.visible": false,
+    "editor.renderIndentGuides": true,
+    "workbench.editor.tabCloseButton": "off",
+    "workbench.sideBar.location": "right",
+    "window.reopenFolders": "all",
+    "files.trimTrailingWhitespace": true,
+    "terminal.integrated.cwd": "~/Desktop",
+    "editor.minimap.renderCharacters": false,
+    "window.zoomLevel": 0,
+}

@@ -1,11 +1,14 @@
-# If you come from bash you might have to change your $PATH.
+export TERM='xterm-256color'
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/cv/.oh-my-zsh
+
+export PATH="$PATH:`yarn global bin`"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="geometry/geometry"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,7 +52,7 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx npm brew git-flow)
+plugins=(osx npm brew git-flow zsh-wakatime)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -64,7 +67,7 @@ source $ZSH/oh-my-zsh.sh
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='nvim'
+   export EDITOR='oni'
  fi
 
 # Compilation flags
@@ -78,21 +81,20 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-export EDITOR="nvim"
-
-alias zshrc="nvim ~/.zshrc"
+alias zshrc="oni ~/.zshrc"
 alias sosh="source ~/.zshrc"
-alias vimrc="nvim ~/.vimrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias vimrc="oni ~/.config/nvim/init.vim"
+alias ohmyzsh="oni ~/.oh-my-zsh"
 
 alias desk="cd ~/Desktop"
 alias cvme="cd ~/Desktop/carlosvigil.me"
 alias fcc="cd ~/Desktop/fcc-projects"
-alias spring="cd ~/Doc*/C*/s*17"
+alias s17="cd ~/Desktop/spring-17"
 
 alias updateAll="brew update && brew update &&
   brew upgrade && brew cleanup && brew prune && gem update && gem cleanup &&
-  npm -g outdated && npm -g update && npm -g prune"
+  yarn global upgrade"
 
 alias brosy='browser-sync start -s -f "index.html, css/*.css, js/*.js" -b "google chrome"
   -b "safari" -b "firefox" -b "edge"'
+eval $(/usr/libexec/path_helper -s)
