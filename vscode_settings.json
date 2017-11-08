@@ -1,20 +1,19 @@
 {
+    "vim.disableAnnoyingNeovimMessage": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
     "editor.fontFamily": "'Fira Code', monospace",
     "editor.rulers": [
-        80,
+        79,
         120
     ],
     "editor.lineNumbers": "relative",
-    "editor.minimap.enabled": true,
+    "editor.minimap.enabled": false,
     "editor.cursorBlinking": "phase",
     "editor.fontLigatures": true,
     "vim.easymotion": true,
     "files.insertFinalNewline": true,
-    "workbench.activityBar.visible": true,
-    "workbench.editor.tabCloseButton": "off",
-    "workbench.sideBar.location": "right",
     "files.trimTrailingWhitespace": true,
-    "editor.minimap.renderCharacters": false,
     "vim.useSystemClipboard": true,
     "eslint.validate": [
         "html",
@@ -27,7 +26,7 @@
     "guides.stack.style": "dotted",
     "guides.updateDelay": 0.64,
     "workbench.editor.swipeToNavigate": true,
-    "workbench.colorTheme": "Material Theme",
+    "workbench.colorTheme": "Dracula",
     "todohighlight.keywords": [
         {
             "text": "BUG:",
@@ -67,17 +66,13 @@
             "cursor":"pointer"
         }
     ],
-    "todohighlight.include": "{**/*.swift,**/*.java,**/*.rb,**/*.hpp,**/*.cpp,**/*.js,**/*.jsx,**/*.ts,**/*.html,**/*.php,**/*.css,**/*.scss}",
     "editor.tabSize": 2,
-    "vim.disableAnnoyingNeovimMessage": true,
     "workbench.iconTheme": "material-icon-theme",
     "editor.minimap.maxColumn": 80,
     "editor.renderLineHighlight": "all",
     "npm-intellisense.showBuildInLibs": true,
     "extensions.autoUpdate": true,
-    "editor.fontSize": 13,
-    "window.zoomLevel": 0,
-    "editor.renderIndentGuides": false,
+    "editor.fontSize": 12,
     "vim.statusBarColorControl": true,
     "vim.statusBarColors" : {
         "normal": "#005f5f",
@@ -91,5 +86,22 @@
         "statusBar.background": "#005f87",
         "statusBar.noFolderBackground": "#005f87",
         "statusBar.debuggingBackground": "#005f87"
-    }
+    },
+    "editor.renderIndentGuides": false,
+    "materialTheme.cache.workbench.settings": {
+        "themeColours": "Darker High Contrast",
+        "accent": "Pink"
+    },
+    "editor.minimap.showSlider": "always",
+    "editor.smoothScrolling": true,
+    "vim.textwidth": 79,
+    "todohighlight.include": [
+        "**/*.js",
+        "**/*.html",
+        "**/*.css",
+        "**/*.py"
+    ],
+    "python.linting.flake8Path": "/usr/local/bin/flake8",
+    "editor.renderControlCharacters": false,
+    "python.pythonPath": "/usr/local/bin/python3"
 }
