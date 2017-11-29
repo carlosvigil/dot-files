@@ -8,7 +8,7 @@
         120
     ],
     "editor.lineNumbers": "relative",
-    "editor.minimap.enabled": false,
+    "editor.minimap.enabled": true,
     "editor.cursorBlinking": "phase",
     "editor.fontLigatures": true,
     "vim.easymotion": true,
@@ -72,7 +72,7 @@
     "editor.renderLineHighlight": "all",
     "npm-intellisense.showBuildInLibs": true,
     "extensions.autoUpdate": true,
-    "editor.fontSize": 12,
+    "editor.fontSize": 13,
     "vim.statusBarColorControl": true,
     "vim.statusBarColors" : {
         "normal": "#005f5f",
@@ -81,11 +81,6 @@
         "visualline": "#005f87",
         "visualblock": "#86592d",
         "replace": "#000000"
-    },
-    "workbench.colorCustomizations": {
-        "statusBar.background": "#005f87",
-        "statusBar.noFolderBackground": "#005f87",
-        "statusBar.debuggingBackground": "#005f87"
     },
     "editor.renderIndentGuides": false,
     "materialTheme.cache.workbench.settings": {
@@ -102,6 +97,14 @@
         "**/*.py"
     ],
     "python.linting.flake8Path": "/usr/local/bin/flake8",
-    "editor.renderControlCharacters": false,
-    "python.pythonPath": "/usr/local/bin/python3"
+    "python.pythonPath": "/usr/local/bin/python3",
+    "workbench.fontAliasing": "antialiased",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f87",
+        "statusBar.noFolderBackground": "#005f87",
+        "statusBar.debuggingBackground": "#005f87"
+    },
+    "git.enableSmartCommit": true,
+    "workbench.panel.location": "right",
+    "vim.foldfix": true
 }

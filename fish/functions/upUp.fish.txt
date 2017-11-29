@@ -1,0 +1,8 @@
+function upUp
+    echo \n# Updating and cleaning Homebrew;
+    brew update; brew update; brew upgrade; brew cleanup; brew prune;
+    echo \n# Updating and cleaning RubyGems;
+    gem update --system; gem update; gem cleanup;
+    echo \n# Updating and cleaning NodePackageManager;
+    npm -g outdated; npm -g update; npm -g upgrade
+end
