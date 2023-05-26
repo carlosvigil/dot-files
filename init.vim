@@ -10,9 +10,11 @@ Plug 'mhinz/vim-startify'
 " Plug 'benekastah/neomake'
 Plug 'w0rp/ale'
 
+Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'digitaltoad/vim-jade'
-Plug 'posva/vim-vue'
+" Plug 'digitaltoad/vim-jade'
+" Plug 'posva/vim-vue'
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
 
 Plug 'rizzatti/dash.vim'
 
@@ -22,26 +24,25 @@ Plug 'taohex/lightline-buffer'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'metakirby5/codi.vim', { 'on': 'Codi' }
-
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
-
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
-Plug 'nathanaelkane/vim-indent-guides', { 'on': 'IndentGuidesToggle' }
-Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 
 Plug 'maxst/flatcolor'
+
+Plug 'wakatime/vim-wakatime'
 
 " Initialize plugin system
 call plug#end()
 
+let g:python_host_prog  = '/usr/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 " ALE
 let g:ale_linters = {
   \ 'javascript': ['eslint'],
   \ 'vue': ['stylelint', 'eslint'],
-  \ 'html': ['tidy']
+  \ 'html': ['tidy'],
+  \ 'python': ['flake8']
   \ }
 
 augroup FiletypeGroup
@@ -87,10 +88,6 @@ let g:lightline = {
         \ },
     \ 'colorscheme': 'flatcolor',
     \ }
-
-  " remap arrow keys
-nnoremap <Left> :bprev!<CR>
-nnoremap <Right> :bnext!<CR>
 
   " lightline-buffer ui settings
   " replace these symbols with ascii characters if your environment does not support unicode
@@ -138,19 +135,19 @@ let g:startify_relative_path = 0
 "filetype plugin indent on
 "syntax enable
 set path+=**
-set textwidth=80
+set textwidth=79
 set number
-set relativenumber
 set cursorline
 set showcmd
+set number relativenumber
 
-if has('patch-7.4.1778')
-  set guicolors
-endif
-if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
+set termguicolors
 colorscheme flatcolor
 
 " Whitespace
@@ -166,6 +163,8 @@ let g:mapleader = "\<Space>"
 nnoremap j jzz
 nnoremap k kzz
 nnoremap <C-h> :Dash<CR>
+nnoremap <Left> :bprev!<CR>
+nnoremap <Right> :bnext!<CR>
 
 " Searching
 "set incsearch
@@ -178,3 +177,4 @@ if !exists(':DiffOrig')
 endif
 
 set wildmode=list,longest
+
