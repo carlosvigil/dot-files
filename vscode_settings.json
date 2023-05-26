@@ -10,10 +10,9 @@
     "editor.fontLigatures": true,
     "vim.easymotion": true,
     "files.insertFinalNewline": true,
-    "workbench.activityBar.visible": false,
+    "workbench.activityBar.visible": true,
     "workbench.editor.tabCloseButton": "off",
     "workbench.sideBar.location": "right",
-    "window.reopenFolders": "all",
     "files.trimTrailingWhitespace": true,
     "editor.minimap.renderCharacters": false,
     "vim.useSystemClipboard": true,
@@ -28,11 +27,11 @@
     "guides.stack.style": "dotted",
     "guides.updateDelay": 0.64,
     "workbench.editor.swipeToNavigate": true,
-    "workbench.colorTheme": "Monokai Dimmed",
+    "workbench.colorTheme": "Material Theme",
     "todohighlight.keywords": [
         {
             "text": "BUG:",
-            "color": "#F2994A2",
+            "color": "#333",
             "borderRadius":"50%",
             "backgroundColor": "#27AE60",
             "overviewRulerColor": "#27AE60"
@@ -76,5 +75,21 @@
     "editor.renderLineHighlight": "all",
     "npm-intellisense.showBuildInLibs": true,
     "extensions.autoUpdate": true,
-    "editor.fontSize": 13
+    "editor.fontSize": 13,
+    "window.zoomLevel": 0,
+    "editor.renderIndentGuides": false,
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors" : {
+        "normal": "#005f5f",
+        "insert": "#5f0000",
+        "visual": "#5f00af",
+        "visualline": "#005f87",
+        "visualblock": "#86592d",
+        "replace": "#000000"
+    },
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f87",
+        "statusBar.noFolderBackground": "#005f87",
+        "statusBar.debuggingBackground": "#005f87"
+    }
 }
