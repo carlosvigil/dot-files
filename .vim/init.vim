@@ -1,1 +1,0 @@
-/Users/cv/.vimrc
