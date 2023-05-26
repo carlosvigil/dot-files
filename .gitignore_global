@@ -1,7 +1,7 @@
 
 # Created by https://www.gitignore.io/api/macos,visualstudiocode,code,xcode,android,vim
 
-### Android #############
+################################# Android #############
 # Built application files
 *.apk
 *.ap_
@@ -118,7 +118,7 @@ hs_err_pid*
 *.out
 *.app
 
-### Node ###
+######################################## Node ###
 # Logs
 logs
 npm-debug.log*
@@ -178,7 +178,7 @@ typings/
 .env
 
 
-### Ruby ###
+######################################### Ruby ###
 *.gem
 *.rbc
 /.config
@@ -230,7 +230,7 @@ build-iPhoneSimulator/
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
 
-### SublimeText ###
+######################################### SublimeText ###
 # cache files for sublime text
 *.tmlanguage.cache
 *.tmPreferences.cache
@@ -262,7 +262,7 @@ bh_unicode_properties.cache
 # https://packagecontrol.io/packages/sublime-github
 GitHub.sublime-settings
 
-### Swift ###
+################################################# Swift ###
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
@@ -331,20 +331,20 @@ fastlane/screenshots
 fastlane/test_output
 
 
-### VisualStudioCode #############
+########################################### VisualStudioCode #############
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
-### Code ###
+################################################### Code ###
 # Visual Studio Code - https://code.visualstudio.com/
 .settings/
 tsconfig.json
 jsconfig.json
 
-### macOS ###################
+###################################### macOS ###################
 *.DS_Store
 .AppleDouble
 .LSOverride
@@ -372,7 +372,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-### Vim #######################
+########################################### Vim #######################
 # swap
 [._]*.s[a-v][a-z]
 [._]*.sw[a-p]
@@ -386,7 +386,7 @@ Session.vim
 # auto-generated tag files
 tags
 
-### Windows ###
+########################################### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
 ehthumbs.db
@@ -407,7 +407,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-### Xcode ####################
+############################################# Xcode ####################
 build
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj

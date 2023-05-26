@@ -1,30 +1,80 @@
 {
-    "workbench.colorTheme": "Material",
-    "workbench.iconTheme": "material-icon-theme",
-    "[cpp]": {
-        "editor.quickSuggestions": false
-    },
-    "[c]": {
-        "editor.quickSuggestions": false
-    },
     "editor.fontFamily": "'Fira Code', monospace",
     "editor.rulers": [
         80,
         120
     ],
     "editor.lineNumbers": "relative",
-    // "editor.minimap.enabled": true,
-    "editor.cursorBlinking": "expand",
+    "editor.minimap.enabled": true,
+    "editor.cursorBlinking": "phase",
     "editor.fontLigatures": true,
     "vim.easymotion": true,
     "files.insertFinalNewline": true,
     "workbench.activityBar.visible": false,
-    "editor.renderIndentGuides": true,
     "workbench.editor.tabCloseButton": "off",
     "workbench.sideBar.location": "right",
     "window.reopenFolders": "all",
     "files.trimTrailingWhitespace": true,
-    "terminal.integrated.cwd": "~/Desktop",
     "editor.minimap.renderCharacters": false,
-    "window.zoomLevel": 0,
+    "vim.useSystemClipboard": true,
+    "eslint.validate": [
+        "html",
+        "javascript",
+        "javascriptreact",
+        "vue"
+    ],
+    "guides.normal.style": "none",
+    "guides.active.style": "solid",
+    "guides.stack.style": "dotted",
+    "guides.updateDelay": 0.64,
+    "workbench.editor.swipeToNavigate": true,
+    "workbench.colorTheme": "Monokai Dimmed",
+    "todohighlight.keywords": [
+        {
+            "text": "BUG:",
+            "color": "#F2994A2",
+            "borderRadius":"50%",
+            "backgroundColor": "#27AE60",
+            "overviewRulerColor": "#27AE60"
+        },
+        {
+            "text": "FEATURE:",
+            "color": "#F2F2F2",
+            "borderRadius": "2px",
+            "backgroundColor": "#9B51E0",
+            "overviewRulerColor": "#9B51E0"
+        },
+        {
+            "text": "MAYBE:",
+            "color": "#333",
+            "borderRadius": "4px",
+            "backgroundColor": "#56CCF2",
+            "overviewRulerColor": "#56CCF2"
+        },
+        {
+            "text": "NOTE:",
+            "color": "#333",
+            "borderRadius":"4px",
+            "backgroundColor": "#BDBDBD",
+            "overviewRulerColor": "#BDBDBD"
+        },
+        {
+            "text": "REQUIREMENT:",
+            "color": "#333",
+            "borderRadius": "6px",
+            "backgroundColor": "#F2994A",
+            "overviewRulerColor": "#F2994A",
+            "isWholeLine": true,
+            "cursor":"pointer"
+        }
+    ],
+    "todohighlight.include": "{**/*.swift,**/*.java,**/*.rb,**/*.hpp,**/*.cpp,**/*.js,**/*.jsx,**/*.ts,**/*.html,**/*.php,**/*.css,**/*.scss}",
+    "editor.tabSize": 2,
+    "vim.disableAnnoyingNeovimMessage": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.minimap.maxColumn": 80,
+    "editor.renderLineHighlight": "all",
+    "npm-intellisense.showBuildInLibs": true,
+    "extensions.autoUpdate": true,
+    "editor.fontSize": 13
 }
