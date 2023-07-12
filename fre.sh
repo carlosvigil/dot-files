@@ -1,4 +1,5 @@
 #!/bin/bash
+# TODO: duplicate and translate for linux containers
 # FOR A FRESH MAC INSTALL
 T=$(date +"%x %r %Z")
 arg=$1

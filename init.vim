@@ -1,20 +1,26 @@
 scriptencoding=utf-8
 
 " Plug_____________________________
-" Conditional Install
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-" Specify a directory for plugins
-call plug#begin('~/.local/share/nvim/plugged')
-"Install Missing Plugins
+
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
-"__________________________________
+" Specify a directory for plugins
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+
 Plug 'mhinz/vim-startify'
 Plug 'rizzatti/dash.vim'
 Plug 'itchyny/lightline.vim'
@@ -27,8 +33,6 @@ Plug 'mlent/ale' " for multiline ghc errors
 Plug 'othree/html5.vim', { 'for': ['html', 'css'] }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
 Plug 'pangloss/vim-javascript'
-" Plug 'digitaltoad/vim-jade'
-" Plug 'posva/vim-vue'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'Shougo/vimproc'
 
@@ -39,12 +43,10 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'overcache/NeoSolarized'
 
 Plug 'ryanoasis/vim-devicons'
-
-"Plug 'wakatime/vim-wakatime'
-
-" Initialize plugin system
+" __________________________________Plug
 call plug#end()
 
 let g:python_host_prog  = '/usr/bin/python'
@@ -57,10 +59,6 @@ let g:ale_linters = {
   \ 'html': ['tidy'],
   \ 'python': ['flake8']
   \ }
-
-
-
-
 
 " Startify
 let g:startify_bookmarks = ['~/.config']
