@@ -1,2 +1,3 @@
-require("helpplz")
-print("hello from top init")
+require 'opts'
+require 'keys'
+require 'ihatelazynvim'
