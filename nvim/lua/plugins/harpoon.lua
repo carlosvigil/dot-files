@@ -4,31 +4,31 @@ return {
   dependencies =  { 'nvim-lua/plenary.nvim' },
   keys = {
     {
-      '<leader>j', '<cmd>harpoon.mark.add_file<cr>',
+      '<leader>j', function() require('harpoon.mark').add_file() end,
       desc = 'Hook file',
     },
     {
-      '<leader>m', '<cmd>lua:harpoon.ui.toggle_quick_menu<cr>',
+      '<leader>m', function() require('harpoon.ui').toggle_quick_menu() end,
       desc = 'Harpoon Menu',
     },
     {
-      '<leader>k', function() harpoon.ui.nav_next() end,
+      '<leader>k', function() require('harpoon.ui').nav_next() end,
       desc = 'Go to next Hook',
     },
     {
-      '<leader>1', function() harpoon.ui.nav_file(1) end,
+      '<leader>1', function() require('harpoon.ui').nav_file(1) end,
       desc = 'Go to Hook 1',
     },
     {
-      '<leader>2', function() harpoon.ui.nav_file(2) end,
+      '<leader>2', function() require('harpoon.ui').nav_file(2) end,
       desc = 'Go to Hook 2',
     },
     {
-      '<leader>3', function() harpoon.ui.nav_file(3) end,
+      '<leader>3', function() require('harpoon.ui').nav_file(3) end,
       desc = 'Go to Hook 3',
     },
     {
-      '<leader>t', function() harpoon.term.gotoTerminal(1) end,
+      '<leader>t', function() require('harpoon.term').gotoTerminal(1) end,
       desc = 'Go to Terminal',
     },
   },
