@@ -10,7 +10,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "neovim/nvim-lspconfig",
     "nvim-telescope/telescope-fzf-native.nvim",
-    build = "make",
+    build = "cmake",
     config = function()
       require('telescope').load_extension('telescope-fzf-native.nvim')
     end,
