@@ -1,0 +1,40 @@
+theme = 'kanagawa'
+
+[editor]
+line-number = 'relative'
+
+[editor.cursor-shape]
+insert = 'bar'
+normal = 'block'
+select = 'underline'
+
+# KEYS --------------------------------
+[keys.normal]
+'ret' = ['open_below', 'normal_mode']
+'tab' = ':buffer-next'
+
+[keys.insert]
+k = { j = "normal_mode" }
+
+[keys.normal.'space']
+'backspace' = ':run-shell-command'
+'ret' = 'command_palette'
+'space' = 'command_mode'
+u = ':update'
+'?' = 'no_op'
+
+# Buffers
+[keys.normal.'space'.b]
+b = 'buffer_picker'
+n = ':new'
+c = ':buffer-close'
+o = ':buffer-close-others'
+O = ':buffer-close-others!'
+
+# Quits
+[keys.normal.'space'.q]
+q = ':quit'
+Q = ':quit-all'
+f = ':quit!'
+F = ':quit-all!'
+W = ':write-quit-all'
