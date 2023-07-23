@@ -1,12 +1,45 @@
 theme = 'kanagawa'
 
 [editor]
+scrolloff = 3
 line-number = 'relative'
+shell = ['zsh', '-c']
+cursorline = true
+true-color = true
+rulers = [80]
+bufferline = 'multiple'
+color-modes = true
+text-width = 100
+
+[editor.statusline]
+left = ['mode', 'spinner', 'position', 'selections', 'total-line-numbers']
+center = ['file-name', 'file-modification-indicator', 'version-control']
+right = ['diagnostics', 'file-type', 'file-line-ending', 'file-encoding']
+mode.normal = 'NORMAL'
+mode.insert = 'INSERT'
+mode.select = 'SELECT'
 
 [editor.cursor-shape]
 insert = 'bar'
 normal = 'block'
 select = 'underline'
+
+[editor.file-picker]
+hidden = false
+git-ignore = false
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+"'" = "'"
+'`' = '`'
+'<' = '>'
+
+[editor.whitespace.render]
+nbsp = 'all'
+tab = 'all'
 
 # KEYS --------------------------------
 [keys.normal]
@@ -20,6 +53,7 @@ k = { j = "normal_mode" }
 'backspace' = ':run-shell-command'
 'ret' = 'command_palette'
 'space' = 'command_mode'
+l = ':reflow 80'
 u = ':update'
 '?' = 'no_op'
 

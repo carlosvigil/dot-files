@@ -1,17 +1,17 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 eval "$(/opt/homebrew/bin/brew shellenv)"
-export ZSH="$HOME/.oh-my-zsh"
 source /opt/homebrew/opt/asdf/libexec/asdf.sh
-
-eval $(thefuck --alias)
+export ZSH="$HOME/.oh-my-zsh"
 
 # pnpm
 export PNPM_HOME="/Users/cv/Library/pnpm"
-if [[ $PATH != *"$PNPM_HOME"* ]]; then
-  export PATH="$PNPM_HOME:$PATH"
-fi
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="frisk"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -38,7 +38,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -77,4 +77,7 @@ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+
+
 
