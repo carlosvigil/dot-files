@@ -7,4 +7,4 @@ Yabairc config’s tiling window manager on macOS.
 Currently using Zsh.
 I love NixOS, Hyprland, and Neovim. — July, 2023
 
-## TODO: Add brightness binds to hypr, config LSP/Tree in nvim, automate oh-my-zsh install, fix vi-fugi keymap
+## TODO: config LSP/Tree in nvim, automate oh-my-zsh install, fix vi-fugi keymap
