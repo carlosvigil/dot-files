@@ -17,7 +17,7 @@ yabai -m config                                 \
     focus_follows_mouse          off            \
     window_origin_display        cursor         \
     window_placement             second_child   \
-    window_topmost               on             \
+    window_topmost               off            \
     window_shadow                float          \
     window_animation_duration    0.00           \
     window_opacity_duration      0.00           \
