@@ -10,6 +10,6 @@ vim.opt.mouse = 'a'
 vim.opt.hlsearch = false
 vim.opt.smartcase = true
 
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
+vim.opt.expandtab = false
+vim.opt.shiftwidth = 0
+vim.opt.tabstop = 3

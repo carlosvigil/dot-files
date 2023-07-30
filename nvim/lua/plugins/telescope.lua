@@ -68,13 +68,6 @@ return {
         })
       end,
       desc = 'Find word'
-    },
-    {
-      '<leader>fr',
-      function() 
-        require('telescope.builtin').old_files()
-      end, {},
-      desc = 'Find recent'
     }
   }
 }

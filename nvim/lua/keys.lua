@@ -19,7 +19,8 @@ VKS('n', '<leader>qs', function() vim.cmd('wqall') end,
 
 -- Buffer
 VKS('n', '<leader>h', vim.cmd.bdelete, { desc = 'Buffer Delete' })
-VKS('n', '<Tab>', vim.cmd.bNext, { desc = 'Buffer Next' })
+VKS('n', '<Tab>', vim.cmd.bnext, { desc = 'Buffer Next' })
+VKS('n', '<S-Tab>', vim.cmd.bprevious, { desc = 'Buffer Previous' })
 
 -- Window
 VKS('n', '<leader>w', '<c-w>', { remap = true, desc = 'Window' })

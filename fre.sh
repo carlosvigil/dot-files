@@ -1,5 +1,7 @@
 #!/bin/bash
-# TODO: duplicate and translate for linux containers
+# TODO: Copy packages into a nix Flake
+# oldTODO: duplicate and translate for linux containers
+# NOTE: 
 # FOR A FRESH MAC INSTALL
 T=$(date +"%x %r %Z")
 arg=$1

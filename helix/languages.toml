@@ -62,3 +62,7 @@ shebangs = ["deno", "node"]
 roots = ["deno.json", "package.json", "tsconfig.json"]
 config = { enable = true, lint = true, unstable = true }
 language-server = { command = "deno", args = ["lsp"], language-id = "typescriptreact" }
+
+[[language]]
+name = "nix"
+formatter = { command = "nixpkgs-fmt" }
