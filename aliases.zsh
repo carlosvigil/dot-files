@@ -10,8 +10,8 @@ alias pn=pnpm
 alias v=nvim
 alias vi=nvim
 
-alias configs='cd ~/.config'
-alias desk='cd ~/Desktop'
-alias mellc='cd ~/git-clones/MELLC-metarepo'
+alias conf='cd $HOME/.config'
+alias desk='cd $HOME/Desktop'
+alias mellc='cd $HOME/src/MELLC-metarepo'
 
 alias nvim_hard_reset='rm -rf ~/.cache/nvim ~/.local/share/nvim/ ~/.local/state/nvim/ ~/.config/nvim/'
