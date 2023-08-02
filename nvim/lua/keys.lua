@@ -11,11 +11,11 @@ VKS('n', '<leader>s', vim.cmd.write, { desc = 'Write/Save' })
 VKS('n', '<leader>qq', vim.cmd.quit, { desc = 'Quit' })
 VKS('n', '<leader>qa', vim.cmd.quitall, { desc = 'Quit All' })
 VKS('n', '<leader>qQ', function() vim.cmd('q!') end,
-  { desc = 'Force Quit' })
+	{ desc = 'Force Quit' })
 VKS('n', '<leader>qA', function() vim.cmd('qa!') end,
-  { desc = 'Force Quit All (ZQ)' })
+	{ desc = 'Force Quit All (ZQ)' })
 VKS('n', '<leader>qs', function() vim.cmd('wqall') end,
-  { desc = 'Write All & Quit (ZZ)' })
+	{ desc = 'Write All & Quit (ZZ)' })
 
 -- Buffer
 VKS('n', '<leader>h', vim.cmd.bdelete, { desc = 'Buffer Delete' })
@@ -27,8 +27,8 @@ VKS('n', '<leader>w', '<c-w>', { remap = true, desc = 'Window' })
 
 -- Tools
 VKS('n', '<leader>S', function() require('mini.starter').open() end,
-  { desc = 'Starter' })
-VKS('n', '<leader>n', vim.cmd.Ex, { desc = 'Netrw' })
+	{ desc = 'Starter' })
+VKS('n', '<leader>l', ':Lex<CR>:vertical resize 30<CR>', { desc = 'Netrw' })
 VKS('n', '<leader>p', vim.cmd.Lazy, { desc = 'Plugins' })
 
 -- Humanist Motions Department
