@@ -3,7 +3,7 @@ VKS = vim.keymap.set
 vim.g.mapleader = " "
 
 -- Finger Savers Prime
-VKS('i', 'kj', '<Esc>')
+VKS('i', 'kk', '<Esc>')
 VKS('n', '<leader><leader>', ':', { desc = 'Command' })
 
 -- Write & Quit
@@ -28,7 +28,7 @@ VKS('n', '<leader>w', '<c-w>', { remap = true, desc = 'Window' })
 -- Tools
 VKS('n', '<leader>S', function() require('mini.starter').open() end,
 	{ desc = 'Starter' })
-VKS('n', '<leader>l', ':Lex<CR>:vertical resize 30<CR>', { desc = 'Netrw' })
+VKS('n', '<leader>n', ':Lex<CR>:vertical resize 30<CR>', { desc = 'Netrw' })
 VKS('n', '<leader>p', vim.cmd.Lazy, { desc = 'Plugins' })
 
 -- Humanist Motions Department
