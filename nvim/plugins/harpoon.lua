@@ -8,11 +8,11 @@ return {
 			desc = 'Hook file',
 		},
 		{
-			'<leader>m', function() require('harpoon.ui').toggle_quick_menu() end,
+			'<leader>h', function() require('harpoon.ui').toggle_quick_menu() end,
 			desc = 'Harpoon Menu',
 		},
 		{
-			'<leader>k', function() require('harpoon.ui').nav_next() end,
+			'<leader>n', function() require('harpoon.ui').nav_next() end,
 			desc = 'Go to next Hook',
 		},
 		{
