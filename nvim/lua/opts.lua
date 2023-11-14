@@ -16,6 +16,8 @@ vim.opt.smartcase = true
 vim.opt.expandtab = false
 vim.opt.shiftwidth = 0
 vim.opt.tabstop = 3
+vim.opt.list = true
+vim.opt.listchars = { tab = "│ ", multispace = "·", trail = "·"}
 
 vim.opt.bs = 'start'
 
@@ -23,3 +25,12 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 
+colors_indent_delimiters = {
+	'dragonRed',
+	'dragonBlue',
+	'dragonYellow',
+	'dragonGreen',
+	'dragonViolet',
+	'dragonOrange',
+	'dragonCyan',
+}

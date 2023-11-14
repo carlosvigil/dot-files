@@ -1,14 +1,14 @@
 return {
 -- Words
 
-{ "neovim/nvim-lspconfig"
+{ 'neovim/nvim-lspconfig'
 },
 
-{ "nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
+{ 'nvim-treesitter/nvim-treesitter',
+	build = ':TSUpdate',
 	config = function ()
-		require("nvim-treesitter.configs").setup({
-			ensure_installed = "all",
+		require('nvim-treesitter.configs').setup({
+			ensure_installed = 'all',
 			sync_install = false,
 			auto_install = false,
 			highlight = {
@@ -36,18 +36,18 @@ return {
 
 -- Navigation
 
-{ "nvim-telescope/telescope.nvim",
+{ 'nvim-telescope/telescope.nvim',
 	branch = '0.1.x',
-	event = "BufRead",
-	cmd = "Telescope",
+	event = 'BufRead',
+	cmd = 'Telescope',
 	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"nvim-tree/nvim-web-devicons",
+		'nvim-lua/plenary.nvim',
+		'nvim-tree/nvim-web-devicons',
 		'theprimeagen/harpoon',
-		"nvim-treesitter/nvim-treesitter",
-		"neovim/nvim-lspconfig",
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "cmake",
+		'nvim-treesitter/nvim-treesitter',
+		'neovim/nvim-lspconfig',
+		'nvim-telescope/telescope-fzf-native.nvim',
+		build = 'cmake',
 		config = function()
 			require('telescope').load_extension('telescope-fzf-native.nvim')
 		end,
@@ -55,12 +55,12 @@ return {
 	opts = {
 		defaults = {
 			file_ignore_patterns = {
-				"%.git", "node_modules", "venv", ".venv", "env", ".env"
+				'%.git', 'node_modules', 'venv', '.venv', 'env', '.env'
 			},
 		},
 		pickers = {
 			find_files = {
-				find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+				find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*' },
 			},
 		},
 		extensions = {
@@ -101,7 +101,7 @@ return {
 			'<leader>fw',
 			function() 
 				require('telescope.builtin').grep_string({
-					search = vim.fn.input("grep > ")
+					search = vim.fn.input('grep > ')
 				})
 			end,
 			desc = 'Find word'
@@ -153,11 +153,11 @@ return {
 	}
 },
 
-{ "folke/which-key.nvim",
-	event = "VeryLazy",
+{ 'folke/which-key.nvim',
+	event = 'VeryLazy',
 	init = function()
 		vim.o.timeout = true
-		vim.o.timeoutlen = 300
+		vim.o.timeoutlen = 200
 		require('which-key').register({
 			f = { name = 'Find' },
 			g = { name = 'Git' },
@@ -175,7 +175,7 @@ return {
 	},
 },
 
-{ "karb94/neoscroll.nvim", init = function() require('neoscroll').setup() end },
+{ 'karb94/neoscroll.nvim', init = function() require('neoscroll').setup() end },
 
 -- Utilities
 
@@ -196,50 +196,90 @@ return {
 
 -- LOOKS
 
-{ "nvim-tree/nvim-web-devicons", lazy = true },
+{ 'nvim-tree/nvim-web-devicons', lazy = true },
 
-{ "rebelot/kanagawa.nvim",
+{ 'rebelot/kanagawa.nvim',
 	lazy = false, -- make sure we load this during startup
 	priority = 1000, -- make sure to load this before all the other start plugins
 	config = function() require('kanagawa').setup({
-		transparent = false,
+		compile = false,
+		undercurl = true,
+		transparent = true,
 		commentStyle = { italic = false },
 		functionStyle = { italic = true },
+		statementStyle = { bold = true },
+		colors = {
+			theme = {
+				all = {
+					ui = {
+						bg_gutter = "none"
+					}
+				}
+			}
+		},
+		overrides = function(colors)
+			local theme = colors.theme
+			return {
+				TelescopeTitle = { fg = theme.ui.special, bold = true },
+				TelescopePromptNormal = { bg = theme.ui.bg_p1 },
+				TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+				TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+				TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+				TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+				TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+				Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },  -- add `blend = vim.o.pumblend` to enable transparency
+				PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+				PmenuSbar = { bg = theme.ui.bg_m1 },
+				PmenuThumb = { bg = theme.ui.bg_p2 },
+			}
+		end,
 	}) end,
 	init = function()
 		vim.cmd.colorscheme('kanagawa-dragon')
 	end,
 },
 
-{ "lukas-reineke/indent-blankline.nvim",
-	main = "ibl",
-	config = function()
-		local highlight = {
-			"RainbowRed",
-			"RainbowYellow",
-			"RainbowBlue",
-			"RainbowOrange",
-			"RainbowGreen",
-			"RainbowViolet",
-			"RainbowCyan",
-		}
+{ 'HiPhish/rainbow-delimiters.nvim',
+	config = function() 
+		local rainbow_delimiters = require 'rainbow-delimiters'
 
-		local hooks = require("ibl.hooks")
+		vim.g.rainbow_delimiters = {
+			strategy = {
+				[''] = rainbow_delimiters.strategy['global'],
+			},
+			query = {
+				[''] = 'rainbow-delimiters',
+				lua = 'rainbow-blocks',
+			},
+			highlight = colors_indent_delimiters
+		}
+	end
+},
+
+{ 'lukas-reineke/indent-blankline.nvim',
+	main = 'ibl',
+	config = function()
+		local highlight = colors_indent_delimiters
+
+		local hooks = require('ibl.hooks')
 		-- create the highlight groups in the highlight setup hook, so they are reset
 		-- every time the colorscheme changes
 		hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-			vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-			vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-			vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-			vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-			vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-			vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-			vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+			vim.api.nvim_set_hl(0, 'dragonRed', { fg = '#c4746e' })
+			vim.api.nvim_set_hl(0, 'dragonBlue', { fg = '#8ba4b0' })
+			vim.api.nvim_set_hl(0, 'dragonYellow', { fg = '#c4b28a' })
+			vim.api.nvim_set_hl(0, 'dragonGreen', { fg = '#87a987' })
+			vim.api.nvim_set_hl(0, 'dragonViolet', { fg = '#8992a7' })
+			vim.api.nvim_set_hl(0, 'dragonOrange', { fg = '#b6927b' })
+			vim.api.nvim_set_hl(0, 'dragonCyan', { fg = '#949fb5' })
 		end)
 
 		require('ibl').setup({
-			indent = { highlight = highlight }
+			indent = { highlight = highlight },
+			scope = { highlight = highlight }
 		})
+
+		hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 	end
 }
 -- outdented final curly
