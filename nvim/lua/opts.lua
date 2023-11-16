@@ -1,29 +1,33 @@
-vim.g.loaded_perl_provider = 0
-vim.opt.termguicolors = true
+local vo = vim.opt
 
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.cursorline = true
+vim.g.loaded_perl_provider = 0
+vo.termguicolors = true
+
+vo.number = true
+vo.relativenumber = true
+vo.cursorline = true
 
 -- mouse in all modes
-vim.opt.mouse = 'a'
+vo.mouse = 'a'
 -- hover on bufferline
-vim.opt.mousemoveevent = true
+vo.mousemoveevent = true
 
-vim.opt.hlsearch = false
-vim.opt.smartcase = true
+vo.hlsearch = false
+vo.smartcase = true
 
-vim.opt.expandtab = false
-vim.opt.shiftwidth = 0
-vim.opt.tabstop = 3
-vim.opt.list = true
-vim.opt.listchars = { tab = "│ ", multispace = "·", trail = "·"}
+vo.expandtab = false
+vo.shiftwidth = 0
+vo.tabstop = 3
+vo.copyindent = true
+vo.preserveindent = true
+vo.list = true
+vo.listchars = { tab = "│ ", multispace = "·", trail = "·"}
 
-vim.opt.bs = 'start'
+vo.bs = 'start'
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
+vo.foldmethod = "expr"
+vo.foldexpr = "nvim_treesitter#foldexpr()"
+vo.foldenable = false
 
 colors_indent_delimiters = {
 	'dragonRed',

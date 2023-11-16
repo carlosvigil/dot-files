@@ -1,10 +1,192 @@
 return {
--- Words
+-- WORDS
 
-{ 'neovim/nvim-lspconfig'
+{ 'neovim/nvim-lspconfig',
+	dependencies = {
+		'williamboman/mason.nvim',
+		'williamboman/mason-lspconfig.nvim',
+
+		-- lsp updates?
+		{ 'j-hui/fidget.nvim', opts = {} },
+
+		-- lua stuff?
+		{ 'folke/neodev.nvim', opts = {} },
+
+		-- TODO: read these readmes
+		{ 'hrsh7th/nvim-cmp',
+			dependencies = {
+				-- Snippet Engine & its associated nvim-cmp source
+				'L3MON4D3/LuaSnip',
+				'saadparwaiz1/cmp_luasnip',
+
+				-- Adds LSP completion capabilities
+				'hrsh7th/cmp-nvim-lsp',
+
+				-- Adds a number of user-friendly snippets
+				'rafamadriz/friendly-snippets',
+			},
+		},
+	},
+	config = function()
+		--	This function gets run when an LSP connects to a particular buffer.
+		local on_attach = function(_, bufnr)
+			local nmap = function(keys, func, desc)
+				if desc then
+					desc = 'LSP: ' .. desc
+				end
+
+				VKS('n', keys, func, { buffer = bufnr, desc = desc })
+			end
+
+			nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+			nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+
+			nmap('[d', vim.diagnostic.goto_prev)
+			nmap(']d', vim.diagnostic.goto_next)
+
+			nmap('<leader>lf', vim.diagnostic.open_float, 'Float diag.')
+			nmap('<leader>lF', vim.lsp.buf.format, 'Format buffer')
+			nmap('<leader>ll', vim.diagnostic.setloclist, 'List')
+			nmap('<leader>lds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+			nmap('<leader>lws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+			nmap('<leader>lwa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
+			nmap('<leader>lwr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+			nmap('<leader>lwl', function()
+				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+			end, '[W]orkspace [L]ist Folders')
+
+			nmap('<leader>lD', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+			nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+			nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+			nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+			nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+
+			-- See `:help K` for why this keymap
+			nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+			nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+
+			-- Create a command `:Format` local to the LSP buffer
+			vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+				vim.lsp.buf.format()
+			end, { desc = 'Format current buffer with LSP' })
+		end
+		--
+		-- document existing key chains
+		require('which-key').register {
+			['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
+			['<leader>r'] = { name = 'Rename', _ = 'which_key_ignore' },
+			['<leader>l'] = { name = 'LSP', _ = 'which_key_ignore' },
+			['<leader>ld'] = { name = 'Document', _ = 'which_key_ignore' },
+			['<leader>lw'] = { name = 'Workspace', _ = 'which_key_ignore' },
+		}
+
+		require('mason').setup()
+		require('mason-lspconfig').setup()
+
+		-- Enable the following language servers
+		local servers = {
+			gopls = {},
+			rust_analyzer = {},
+			jsonls = {},
+			eslint = {},
+			tsserver = {},
+			html = { filetypes = { 'html', } },
+			svelte = {},
+			bashls = {},
+			dockerls = {},
+			docker_compose_language_service = {},
+			cssls = {},
+			tailwindcss = {},
+			taplo = {},
+			marksman = {},
+
+			lua_ls = {
+				Lua = {
+					workspace = { checkThirdParty = false },
+					telemetry = { enable = false },
+				},
+			},
+		}
+
+		-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+		-- Ensure the servers above are installed
+		local mason_lspconfig = require 'mason-lspconfig'
+
+		mason_lspconfig.setup {
+			ensure_installed = vim.tbl_keys(servers),
+		}
+
+		mason_lspconfig.setup_handlers {
+			function(server_name)
+				require('lspconfig')[server_name].setup {
+					capabilities = capabilities,
+					on_attach = on_attach,
+					settings = servers[server_name],
+					filetypes = (servers[server_name] or {}).filetypes,
+				}
+			end,
+		}
+
+		-- [[ Configure nvim-cmp ]]
+		-- See `:help cmp`
+		local cmp = require 'cmp'
+		local luasnip = require 'luasnip'
+		require('luasnip.loaders.from_vscode').lazy_load()
+		luasnip.config.setup {}
+
+		cmp.setup {
+			snippet = {
+			expand = function(args)
+				luasnip.lsp_expand(args.body)
+			end,
+			},
+			completion = {
+				completeopt = 'menu,menuone,noinsert'
+			},
+			mapping = cmp.mapping.preset.insert {
+				['<C-n>'] = cmp.mapping.select_next_item(),
+				['<C-p>'] = cmp.mapping.select_prev_item(),
+				['<C-d>'] = cmp.mapping.scroll_docs(-4),
+				['<C-f>'] = cmp.mapping.scroll_docs(4),
+				['<C-Space>'] = cmp.mapping.complete {},
+				['<CR>'] = cmp.mapping.confirm {
+					behavior = cmp.ConfirmBehavior.Replace,
+					select = true,
+				},
+				['<Tab>'] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif luasnip.expand_or_locally_jumpable() then
+						luasnip.expand_or_jump()
+					else
+						fallback()
+					end
+				end, { 'i', 's' }),
+				['<S-Tab>'] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif luasnip.locally_jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { 'i', 's' }),
+			},
+			sources = {
+				{ name = 'nvim_lsp' },
+				{ name = 'luasnip' },
+			},
+		}
+	end
 },
 
 { 'nvim-treesitter/nvim-treesitter',
+	dependencies = {
+		'nvim-treesitter/nvim-treesitter-textobjects',
+	},
 	build = ':TSUpdate',
 	config = function ()
 		require('nvim-treesitter.configs').setup({
@@ -29,12 +211,29 @@ return {
 	end
 },
 
+
 { 'echasnovski/mini.surround',
 	version = false,
-	config = true
+	config = function()
+		require 'mini.surround'.setup {
+		mappings = {
+			add = 'csa',
+			delete = 'csd',
+			replace = 'csr',
+		}
+	} end
 },
 
--- Navigation
+{ 'numToStr/Comment.nvim',
+	opts = {}
+},
+
+-- NAVIGATION
+{ 'ggandor/leap.nvim',
+	config = function()
+		require('leap').add_default_mappings(true)
+	end
+},
 
 { 'nvim-telescope/telescope.nvim',
 	branch = '0.1.x',
@@ -99,7 +298,7 @@ return {
 		},
 		{
 			'<leader>fw',
-			function() 
+			function()
 				require('telescope.builtin').grep_string({
 					search = vim.fn.input('grep > ')
 				})
@@ -159,10 +358,15 @@ return {
 		vim.o.timeout = true
 		vim.o.timeoutlen = 200
 		require('which-key').register({
-			f = { name = 'Find' },
-			g = { name = 'Git' },
-			q = { name = 'Quit' },
-		}, { prefix = '<leader>' })
+				f = { name = 'Find' },
+				g = { name = 'Git' },
+				q = { name = 'Quit' },
+			}, { prefix = '<leader>' }
+		)
+
+		require('which-key').register({
+			['cs'] = { name = 'Change surround' },
+		})
 	end,
 	opts = {
 		window = {
@@ -177,7 +381,7 @@ return {
 
 { 'karb94/neoscroll.nvim', init = function() require('neoscroll').setup() end },
 
--- Utilities
+-- UTILITIES
 
 { 'tpope/vim-fugitive',
 	event = 'VeryLazy',
@@ -189,8 +393,8 @@ return {
 { 'mbbill/undotree',
 	event = 'VeryLazy',
 	cmd = 'UndotreeToggle',
-	keys = { 
-		{ '<leader>u', '<cmd>UndotreeToggle<cr>', desc = 'Undo Tree' } 
+	keys = {
+		{ '<leader>u', '<cmd>UndotreeToggle<cr>', desc = 'Undo Tree' }
 	}
 },
 
@@ -240,7 +444,7 @@ return {
 },
 
 { 'HiPhish/rainbow-delimiters.nvim',
-	config = function() 
+	config = function()
 		local rainbow_delimiters = require 'rainbow-delimiters'
 
 		vim.g.rainbow_delimiters = {
@@ -281,6 +485,50 @@ return {
 
 		hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 	end
-}
+},
+
+-- Adds git related signs to the gutter, as well as utilities for managing changes
+{ 'lewis6991/gitsigns.nvim',
+	opts = {
+		-- See `:help gitsigns.txt`
+		signs = {
+			add = { text = '+' },
+			change = { text = '~' },
+			delete = { text = '_' },
+			topdelete = { text = '‾' },
+			changedelete = { text = '~' },
+		},
+
+		on_attach = function(bufnr)
+			vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+
+			-- don't override the built-in and fugitive keymaps
+			local gs = package.loaded.gitsigns
+
+			vim.keymap.set({ 'n', 'v' }, ']c', function()
+				if vim.wo.diff then
+					return ']c'
+				end
+				vim.schedule(function()
+					gs.next_hunk()
+				end)
+
+				return '<Ignore>'
+			end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
+
+			vim.keymap.set({ 'n', 'v' }, '[c', function()
+				if vim.wo.diff then
+					return '[c'
+				end
+				vim.schedule(function()
+					gs.prev_hunk()
+				end)
+
+				return '<Ignore>'
+			end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
+		end,
+	},
+},
+
 -- outdented final curly
 }
