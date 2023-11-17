@@ -47,15 +47,12 @@ tab = 'all'
 'tab' = ':buffer-next'
 
 [keys.insert]
-j = { j = "normal_mode" }
+k = { k = "normal_mode" }
 
 [keys.normal.'space']
-'backspace' = ':run-shell-command'
-'ret' = 'command_palette'
 'space' = 'command_mode'
 l = ':reflow 80'
 u = ':update'
-'?' = 'no_op'
 
 # Buffers
 [keys.normal.'space'.b]

@@ -1,68 +1,68 @@
 [[language]]
-name = "html"
-formatter = { command = 'prettier', args = ["--parser", "html"] }
-
-[[language]]
-name = "css"
-formatter = { command = 'prettier', args = ["--parser", "css"] }
-
-[[language]]
-name = "javascript"
-formatter = { command = 'deno', args = ["fmt", "-", "--ext", "js" ] }
-auto-format = true
-
-[[language]]
-name = "json"
-formatter = { command = 'deno', args = ["fmt", "-", "--ext", "json" ] }
-
-[[language]]
-name = "markdown"
-formatter = { command = 'deno', args = ["fmt", "-", "--ext", "md" ] }
-auto-format = true
-
-[[language]]
 name = "typescript"
-formatter = { command = 'deno', args = ["fmt", "-", "--ext", "ts" ] }
+shebangs = ["deno"]
+roots = ["deno.json", "deno.jsonc"]
+file-types = ["js", "ts", "jsx", "tsx"]
+language-servers = ["deno-lsp"]
 auto-format = true
 
-[[language]]
-name = "jsx"
-formatter = { command = 'deno', args = ["fmt", "-", "--ext", "jsx" ] }
+[language-server.deno-lsp]
+command = "deno"
+args = ["lsp"]
+environment = { NO_COLOR = "1" }
+
+[language-server.deno-lsp.config.deno]
+enable = true
+# Uncomment to enable completion of unstable features of Deno
+# unstable = true
+# Uncomment to cache dependencies on save
+# cacheOnSave = true
+# Enable completion of importing from registries
+# Enable completion of function calls
+suggest = { completeFunctionCalls = false, imports = { hosts = { "https://deno.land" = true } } }
+# suggest = { imports = { hosts = { "https://deno.land" = true, "https://crux.land" = true, "https://x.nest.land" = true } } }
+# Uncomment to enable inlay hints
+# inlayHints.parameterNames.enabled = "all"
+# inlayHints.parameterTypes.enabled = true
+# inlayHints.variableTypes.enabled = true
+# inlayHints.propertyDeclarationTypes.enabled  = true
+# inlayHints.functionLikeReturnTypes.enabled = true
+# inlayHints.enumMemberValues.enabled = true
+
+[[languages]]
+name = "go"
 auto-format = true
+formatter = { command = "goimports" }
 
 [[language]]
-name = "tsx"
-formatter = { command = 'deno', args = ["fmt", "-", "--ext", "tsx" ] }
-auto-format = true
+name = "sql"
+language-servers = [ "sql-language-server" ]
+
+[language-server.sql-language-server]
+command = "sql-language-server"
+args = ["up", "--method", "stdio"]
 
 [[language]]
-name = "javascript"
-shebangs = ["deno", "node"]
-roots = ["deno.json", "package.json", "tsconfig.json"]
-config = { enable = true, lint = true, unstable = true }
-language-server = { command = "deno", args = ["lsp"], language-id = "javascript" }
+name = "python"
+language-servers = [ "pyright", "ruff" ]
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+
+[language-server.ruff]
+command = "ruff-lsp"
+
+[language-server.ruff.config.settings]
+args = ["--ignore", "E501"]
+
+[language.formatter]
+command = "black"
+args = ["--line-length", "88", "--quiet", "-"]
 
 [[language]]
-name = "jsx"
-shebangs = ["deno", "node"]
-roots = ["deno.json", "package.json", "tsconfig.json"]
-config = { enable = true, lint = true, unstable = true }
-language-server = { command = "deno", args = ["lsp"], language-id = "javascriptreact" }
+name = "toml"
+formatter = { command = "taplo", args = ["fmt", "-"] }
 
-[[language]]
-name = "typescript"
-shebangs = ["deno", "node"]
-roots = ["deno.json", "package.json", "tsconfig.json"]
-config = { enable = true, lint = true, unstable = true }
-language-server = { command = "deno", args = ["lsp"], language-id = "typescript" }
-
-[[language]]
-name = "tsx"
-shebangs = ["deno", "node"]
-roots = ["deno.json", "package.json", "tsconfig.json"]
-config = { enable = true, lint = true, unstable = true }
-language-server = { command = "deno", args = ["lsp"], language-id = "typescriptreact" }
-
-[[language]]
-name = "nix"
-formatter = { command = "nixpkgs-fmt" }
+# [[language]]
+# name = "nix"
+# formatter = { command = "nixpkgs-fmt" }
