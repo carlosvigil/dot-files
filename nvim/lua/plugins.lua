@@ -400,6 +400,12 @@ return {
 
 -- LOOKS
 
+{ 'nvim-lualine/lualine.nvim',
+	opts = {
+		extensions = { 'mason', 'fzf', 'lazy', 'fugitive' },
+	},
+},
+
 { 'nvim-tree/nvim-web-devicons', lazy = true },
 
 { 'rebelot/kanagawa.nvim',
@@ -500,7 +506,7 @@ return {
 		},
 
 		on_attach = function(bufnr)
-			vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+			vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
 
 			-- don't override the built-in and fugitive keymaps
 			local gs = package.loaded.gitsigns
