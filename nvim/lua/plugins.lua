@@ -211,7 +211,6 @@ return {
 	end
 },
 
-
 { 'echasnovski/mini.surround',
 	version = false,
 	config = function()
@@ -233,6 +232,17 @@ return {
 	config = function()
 		require('leap').add_default_mappings(true)
 	end
+},
+
+-- TODO: add shortcut, neotree
+{ "nvim-neo-tree/neo-tree.nvim",
+	branch = "v3.x",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+		"MunifTanjim/nui.nvim",
+		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+	}
 },
 
 { 'nvim-telescope/telescope.nvim',
@@ -377,6 +387,12 @@ return {
 			align = 10
 		},
 	},
+},
+
+	-- TODO: Add shortcut, todo comments
+{ 'folke/todo-comments.nvim',
+	dependencies = { 'nvim-lua/plenary.nvim' },
+	opts = {}
 },
 
 { 'karb94/neoscroll.nvim', init = function() require('neoscroll').setup() end },
