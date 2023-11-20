@@ -46,7 +46,6 @@ return {
 
 			nmap('<leader>lf', vim.diagnostic.open_float, 'Float diag.')
 			nmap('<leader>lF', vim.lsp.buf.format, 'Format buffer')
-			nmap('<leader>ll', vim.diagnostic.setloclist, 'List')
 			nmap('<leader>lds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 			nmap('<leader>lws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 			nmap('<leader>lwa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
@@ -99,6 +98,8 @@ return {
 			tailwindcss = {},
 			taplo = {},
 			marksman = {},
+			pyright = {},
+			ruff_lsp = {},
 
 			lua_ls = {
 				Lua = {
@@ -255,7 +256,12 @@ return {
 		'theprimeagen/harpoon',
 		'nvim-treesitter/nvim-treesitter',
 		'neovim/nvim-lspconfig',
-		'nvim-telescope/telescope-fzf-native.nvim',
+			{ 'nvim-telescope/telescope-fzf-native.nvim',
+				build = 'make',
+				cond = function()
+					return vim.fn.executable 'make' == 1
+				end,
+			},
 		build = 'cmake',
 		config = function()
 			require('telescope').load_extension('telescope-fzf-native.nvim')
@@ -281,40 +287,54 @@ return {
 		{
 			'<leader>ff',
 			function()
-				require('telescope.builtin').find_files()
+				require ('telescope.builtin').find_files()
 			end, {},
 			desc = 'Find files',
 		},
 		{
 			'<leader>fg',
 			function()
-				require('telescope.builtin').git_files()
+				require ('telescope.builtin').git_files()
 			end, {},
 			desc = 'Find git files',
 		},
 		{
+			'<leader>fr',
+			function ()
+				require ('telescope.builtin').oldfiles()
+			end, {},
+			desc = 'Find recent files'
+		},
+		{
 			'<leader>fb',
 			function()
-				require('telescope.builtin').buffers()
+				require ('telescope.builtin').buffers()
 			end, {},
 			desc = 'Find buffers',
 		},
 		{
 			'<leader>fh',
 			function()
-				require('telescope.builtin').help_tags()
+				require ('telescope.builtin').help_tags()
 			end, {},
 			desc = 'Find help tags',
 		},
 		{
+			'<leader>fd',
+			function()
+				require ('telescope.builtin').diagnostics()
+			end, {},
+			desc = 'Find in diagnostics',
+		},
+		{
 			'<leader>fw',
 			function()
-				require('telescope.builtin').grep_string({
+				require ('telescope.builtin').grep_string({
 					search = vim.fn.input('grep > ')
 				})
 			end,
 			desc = 'Find word'
-		}
+		},
 	}
 },
 
