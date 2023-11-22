@@ -39,7 +39,7 @@ return {
 			end
 
 			nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-			nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+			nmap('<leader>lc', vim.lsp.buf.code_action, '[C]ode Action')
 
 			nmap('[d', vim.diagnostic.goto_prev)
 			nmap(']d', vim.diagnostic.goto_next)
@@ -388,6 +388,7 @@ return {
 		vim.o.timeout = true
 		vim.o.timeoutlen = 200
 		require('which-key').register({
+				c = { name = 'Config' },
 				f = { name = 'Find' },
 				g = { name = 'Git' },
 				q = { name = 'Quit' },

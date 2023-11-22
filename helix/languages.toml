@@ -1,68 +1,71 @@
 [[language]]
-name = "typescript"
-shebangs = ["deno"]
-roots = ["deno.json", "deno.jsonc"]
-file-types = ["js", "ts", "jsx", "tsx"]
-language-servers = ["deno-lsp"]
+name = 'go'
 auto-format = true
-
-[language-server.deno-lsp]
-command = "deno"
-args = ["lsp"]
-environment = { NO_COLOR = "1" }
-
-[language-server.deno-lsp.config.deno]
-enable = true
-# Uncomment to enable completion of unstable features of Deno
-# unstable = true
-# Uncomment to cache dependencies on save
-# cacheOnSave = true
-# Enable completion of importing from registries
-# Enable completion of function calls
-suggest = { completeFunctionCalls = false, imports = { hosts = { "https://deno.land" = true } } }
-# suggest = { imports = { hosts = { "https://deno.land" = true, "https://crux.land" = true, "https://x.nest.land" = true } } }
-# Uncomment to enable inlay hints
-# inlayHints.parameterNames.enabled = "all"
-# inlayHints.parameterTypes.enabled = true
-# inlayHints.variableTypes.enabled = true
-# inlayHints.propertyDeclarationTypes.enabled  = true
-# inlayHints.functionLikeReturnTypes.enabled = true
-# inlayHints.enumMemberValues.enabled = true
-
-[[languages]]
-name = "go"
-auto-format = true
-formatter = { command = "goimports" }
+formatter = { command = 'goimports' }
+indent = { tab-width = 3, unit = '\t' }
 
 [[language]]
-name = "sql"
-language-servers = [ "sql-language-server" ]
+name = 'sql'
+language-servers = [ 'sql-language-server' ]
+indent = { tab-width = 3, unit = '\t' }
 
 [language-server.sql-language-server]
-command = "sql-language-server"
-args = ["up", "--method", "stdio"]
+command = 'sql-language-server'
+args = ['up', '--method', 'stdio']
 
 [[language]]
-name = "python"
-language-servers = [ "pyright", "ruff" ]
+name = 'python'
+language-servers = [ 'pyright', 'ruff' ]
+indent = { tab-width = 3, unit = '\t' }
 
 [language-server.pyright.config.python.analysis]
-typeCheckingMode = "basic"
+typeCheckingMode = 'basic'
 
 [language-server.ruff]
-command = "ruff-lsp"
+command = 'ruff-lsp'
 
 [language-server.ruff.config.settings]
-args = ["--ignore", "E501"]
+args = ['--ignore', 'E501']
 
 [language.formatter]
-command = "black"
-args = ["--line-length", "88", "--quiet", "-"]
+command = 'black'
+args = ['--line-length', '88', '--quiet', '-']
 
 [[language]]
-name = "toml"
-formatter = { command = "taplo", args = ["fmt", "-"] }
+name = 'lua'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'html'
+language-servers = [ 'tailwindcss-ls', 'vscode-html-language-server' ]
+
+[[language]]
+name = 'javascript'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'typescript'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'json'
+language-servers = ['vscode-json', 'typescript-language-server']
+
+[[language]]
+name = 'svelte'
+language-servers = [ 'svelteserver', 'tailwindcss-ls' ]
+roots = ['svelte.config.js']
+indent = { tab-width = 3, unit = '\t' }
+
+[language-server.vscode-json]
+command = 'vscode-json-language-server'
+args = ['--stdio']
+
+[[language]]
+name = 'toml'
+formatter = { command = 'taplo', args = ['fmt', '-'] }
+indent = { tab-width = 3, unit = '\t' }
 
 # [[language]]
-# name = "nix"
-# formatter = { command = "nixpkgs-fmt" }
+# name = 'nix'
+# formatter = { command = 'nixpkgs-fmt' }
