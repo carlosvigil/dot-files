@@ -1,4 +1,4 @@
-theme = 'kanagawa'
+theme = 'no-bg'
 
 [editor]
 shell = ['zsh', '-c']
@@ -12,6 +12,7 @@ text-width = 100
 bufferline = 'multiple'
 smart-tab.enable = true
 mouse = true
+scrolloff = 0
 
 [editor.statusline]
 left = ['mode', 'spinner', 'position', 'selections', 'total-line-numbers']
@@ -92,6 +93,7 @@ o = 'file_picker_in_current_buffer_directory'
 b = 'buffer_picker'
 n = ':new'
 c = ':buffer-close'
+C = ':buffer-close!'
 o = ':buffer-close-others'
 O = ':buffer-close-others!'
 
@@ -108,3 +110,5 @@ W = ':write-quit-all'
 c = ':config-open'
 l = ':o ~/.config/helix/languages.toml'
 r = ':config-reload'
+h = ':set lsp.display-inlay-hints true'
+H = ':set lsp.display-inlay-hints false'

@@ -72,7 +72,6 @@ return {
 		--
 		-- document existing key chains
 		require('which-key').register {
-			['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
 			['<leader>r'] = { name = 'Rename', _ = 'which_key_ignore' },
 			['<leader>l'] = { name = 'LSP', _ = 'which_key_ignore' },
 			['<leader>ld'] = { name = 'Document', _ = 'which_key_ignore' },
@@ -181,7 +180,7 @@ return {
 				{ name = 'luasnip' },
 			},
 		}
-	end
+	end,
 },
 
 { 'nvim-treesitter/nvim-treesitter',
@@ -216,12 +215,13 @@ return {
 	version = false,
 	config = function()
 		require 'mini.surround'.setup {
-		mappings = {
-			add = 'csa',
-			delete = 'csd',
-			replace = 'csr',
+			mappings = {
+				add = 'csa',
+				delete = 'csd',
+				replace = 'csr',
+			}
 		}
-	} end
+	end
 },
 
 { 'numToStr/Comment.nvim',
@@ -482,7 +482,7 @@ return {
 		end,
 	}) end,
 	init = function()
-		vim.cmd.colorscheme('kanagawa-dragon')
+		vim.cmd.colorscheme('kanagawa-wave')
 	end,
 },
 
