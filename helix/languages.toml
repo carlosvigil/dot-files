@@ -5,6 +5,30 @@ formatter = { command = 'goimports' }
 indent = { tab-width = 3, unit = '\t' }
 
 [[language]]
+name = 'crystal'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'java'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'ruby'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'c'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'cpp'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'rust'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
 name = 'sql'
 language-servers = [ 'sql-language-server' ]
 indent = { tab-width = 3, unit = '\t' }
@@ -38,6 +62,15 @@ indent = { tab-width = 3, unit = '\t' }
 [[language]]
 name = 'html'
 language-servers = [ 'tailwindcss-ls', 'vscode-html-language-server' ]
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'css'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'scss'
+indent = { tab-width = 3, unit = '\t' }
 
 [[language]]
 name = 'javascript'
@@ -49,7 +82,7 @@ indent = { tab-width = 3, unit = '\t' }
 
 [[language]]
 name = 'json'
-language-servers = ['vscode-json', 'typescript-language-server']
+indent = { tab-width = 3, unit = '\t' }
 
 [[language]]
 name = 'svelte'
@@ -57,15 +90,36 @@ language-servers = [ 'svelteserver', 'tailwindcss-ls' ]
 roots = ['svelte.config.js']
 indent = { tab-width = 3, unit = '\t' }
 
-[language-server.vscode-json]
-command = 'vscode-json-language-server'
+[language-server.tailwindcss-ls]
+command = 'tailwindcss-language-server'
 args = ['--stdio']
+
+[[language]]
+name = 'php'
+indent = { tab-width = 3, unit = '\t' }
 
 [[language]]
 name = 'toml'
 formatter = { command = 'taplo', args = ['fmt', '-'] }
 indent = { tab-width = 3, unit = '\t' }
 
-# [[language]]
-# name = 'nix'
+[[language]]
+name = 'bash'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'env'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'nix'
+indent = { tab-width = 3, unit = '\t' }
 # formatter = { command = 'nixpkgs-fmt' }
+
+ [language-server.typescript-language-server.config]
+ documentFormatting = false
+ hostInfo = 'helix'
+
+ [language-server.typescript-language-server.config.completions]
+completeFunctionCalls = true
+
