@@ -29,12 +29,5 @@ vo.foldmethod = "expr"
 vo.foldexpr = "nvim_treesitter#foldexpr()"
 vo.foldenable = false
 
-colors_indent_delimiters = {
-	'dragonRed',
-	'dragonBlue',
-	'dragonYellow',
-	'dragonGreen',
-	'dragonViolet',
-	'dragonOrange',
-	'dragonCyan',
-}
+vo.laststatus = 3 -- Or 3 for global statusline
+vo.statusline = " %f %m %= %l:%c ♥ "

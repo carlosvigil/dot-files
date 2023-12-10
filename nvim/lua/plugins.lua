@@ -438,51 +438,83 @@ return {
 -- LOOKS
 
 { 'nvim-lualine/lualine.nvim',
+	event = 'ColorScheme',
 	opts = {
 		extensions = { 'mason', 'fzf', 'lazy', 'fugitive' },
+		theme = 'rose-pine'
 	},
 },
 
 { 'nvim-tree/nvim-web-devicons', lazy = true },
 
-{ 'rebelot/kanagawa.nvim',
+{ 'rose-pine/neovim',
+	name = 'rose-pine',
 	lazy = false, -- make sure we load this during startup
 	priority = 1000, -- make sure to load this before all the other start plugins
-	config = function() require('kanagawa').setup({
-		compile = false,
-		undercurl = true,
-		transparent = true,
-		commentStyle = { italic = false },
-		functionStyle = { italic = true },
-		statementStyle = { bold = true },
-		colors = {
-			theme = {
-				all = {
-					ui = {
-						bg_gutter = "none"
-					}
-				}
+	config = function() require('rose-pine').setup({
+		--- @usage 'auto'|'main'|'moon'|'dawn'
+		variant = 'auto',
+		--- @usage 'main'|'moon'|'dawn'
+		dark_variant = 'main',
+		bold_vert_split = false,
+		dim_nc_background = true,
+		disable_background = false,
+		disable_float_background = false,
+		disable_italics = false,
+
+		--- @usage string hex value or named color from rosepinetheme.com/palette
+		groups = {
+			background = 'base',
+			background_nc = '_experimental_nc',
+			panel = 'surface',
+			panel_nc = 'base',
+			border = 'highlight_med',
+			comment = 'muted',
+			link = 'iris',
+			punctuation = 'subtle',
+
+			error = 'love',
+			hint = 'iris',
+			info = 'foam',
+			warn = 'gold',
+
+			headings = {
+				h1 = 'iris',
+				h2 = 'foam',
+				h3 = 'rose',
+				h4 = 'gold',
+				h5 = 'pine',
+				h6 = 'foam',
 			}
+			-- or set all headings at once
+			-- headings = 'subtle'
 		},
-		overrides = function(colors)
-			local theme = colors.theme
-			return {
-				TelescopeTitle = { fg = theme.ui.special, bold = true },
-				TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-				TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
-				TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-				TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-				TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-				TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
-				Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },  -- add `blend = vim.o.pumblend` to enable transparency
-				PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-				PmenuSbar = { bg = theme.ui.bg_m1 },
-				PmenuThumb = { bg = theme.ui.bg_p2 },
-			}
-		end,
+
+		-- Change specific vim highlight groups
+		-- https://github.com/rose-pine/neovim/wiki/Recipes
+		highlight_groups = {
+			ColorColumn = { bg = 'rose' },
+
+			-- Blend colours against the "base" background
+			CursorLine = { bg = 'foam', blend = 10 },
+			StatusLine = { fg = 'love', bg = 'love', blend = 10 },
+			StatusLineNC = { fg = "subtle", bg = "surface" },
+
+			TelescopeBorder = { fg = "highlight_high", bg = "none" },
+			TelescopeNormal = { bg = "none" },
+			TelescopePromptNormal = { bg = "base" },
+			TelescopeResultsNormal = { fg = "subtle", bg = "none" },
+			TelescopeSelection = { fg = "text", bg = "base" },
+			TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
+			-- By default each group adds to the existing config.
+			-- If you only want to set what is written in this config exactly,
+			-- you can set the inherit option:
+			Search = { bg = 'gold', inherit = false },
+		}
 	}) end,
+
 	init = function()
-		vim.cmd.colorscheme('kanagawa-wave')
+		vim.cmd.colorscheme('rose-pine')
 	end,
 },
 
@@ -498,7 +530,6 @@ return {
 				[''] = 'rainbow-delimiters',
 				lua = 'rainbow-blocks',
 			},
-			highlight = colors_indent_delimiters
 		}
 	end
 },
@@ -506,27 +537,8 @@ return {
 { 'lukas-reineke/indent-blankline.nvim',
 	main = 'ibl',
 	config = function()
-		local highlight = colors_indent_delimiters
-
-		local hooks = require('ibl.hooks')
-		-- create the highlight groups in the highlight setup hook, so they are reset
-		-- every time the colorscheme changes
-		hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-			vim.api.nvim_set_hl(0, 'dragonRed', { fg = '#c4746e' })
-			vim.api.nvim_set_hl(0, 'dragonBlue', { fg = '#8ba4b0' })
-			vim.api.nvim_set_hl(0, 'dragonYellow', { fg = '#c4b28a' })
-			vim.api.nvim_set_hl(0, 'dragonGreen', { fg = '#87a987' })
-			vim.api.nvim_set_hl(0, 'dragonViolet', { fg = '#8992a7' })
-			vim.api.nvim_set_hl(0, 'dragonOrange', { fg = '#b6927b' })
-			vim.api.nvim_set_hl(0, 'dragonCyan', { fg = '#949fb5' })
-		end)
-
 		require('ibl').setup({
-			indent = { highlight = highlight },
-			scope = { highlight = highlight }
 		})
-
-		hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 	end
 },
 
