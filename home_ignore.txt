@@ -1,4 +1,6 @@
 # ls -a >> .ignore
+# node is double tapped with global ignore
+node_modules/
 .CFUserTextEncoding
 .asdf
 .aws
