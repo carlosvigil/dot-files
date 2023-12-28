@@ -7,15 +7,21 @@ node_modules/
 .cache
 .cargo
 .config/helix/runtime
+.config/google-chrome
+.config/google-chrome-unstable
+.config/microsoft-edge
 .cursor
 .dlv
 .docker
+.erg
 .gem
 .gnupg
 .lesshst
 .local
+.mozilla
 .npm
 .orbstack
+.pki
 .pnpm-state
 .rustup
 .ssh
@@ -40,6 +46,7 @@ Music
 OrbStack
 Pictures
 Public
+src
 
 *.png
 *.jpg
