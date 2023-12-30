@@ -1,0 +1,15 @@
+@import "./rose-pine.css";
+
+* {
+	/* reference the color by using @color-name */
+	background: @base;
+	border: 1px solid @overlay;
+}
+
+#memory {
+	color: @foam;
+}
+
+#temperature {
+	color: @rose;
+}

@@ -1,0 +1,47 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export FZF_DEFAULT_OPTS:\x0a\x09\x09\x2d\x2dcolor\x3dfg\x3a\x23908caa\x2cbg\x3a\x23191724\x2chl\x3a\x23ebbcba\x0a\x09\x09\x2d\x2dcolor\x3dfg\x2b\x3a\x23e0def4\x2cbg\x2b\x3a\x2326233a\x2chl\x2b\x3a\x23ebbcba\x0a\x09\x09\x2d\x2dcolor\x3dborder\x3a\x23403d52\x2cheader\x3a\x2331748f\x2cgutter\x3a\x23191724\x0a\x09\x09\x2d\x2dcolor\x3dspinner\x3a\x23f6c177\x2cinfo\x3a\x239ccfd8\x2cseparator\x3a\x23403d52\x0a\x09\x09\x2d\x2dcolor\x3dpointer\x3a\x23c4a7e7\x2cmarker\x3a\x23eb6f92\x2cprompt\x3a\x23908caa
+SETUVAR __fish_initialized:3400
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1erose\x2dpine/fish
+SETUVAR _fisher_rose_2D_pine_2F_fish_files:\x7e/\x2econfig/fish/themes/Ros\u00e9\x20Pine\x20Dawn\x2etheme\x1e\x7e/\x2econfig/fish/themes/Ros\u00e9\x20Pine\x20Moon\x2etheme\x1e\x7e/\x2econfig/fish/themes/Ros\u00e9\x20Pine\x2etheme
+SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR fish_color_autosuggestion:969896
+SETUVAR fish_color_cancel:\x2d\x2dreverse
+SETUVAR fish_color_command:c397d8
+SETUVAR fish_color_comment:e7c547
+SETUVAR fish_color_cwd:green
+SETUVAR fish_color_cwd_root:red
+SETUVAR fish_color_end:c397d8
+SETUVAR fish_color_error:d54e53
+SETUVAR fish_color_escape:00a6b2
+SETUVAR fish_color_history_current:\x2d\x2dbold
+SETUVAR fish_color_host:normal
+SETUVAR fish_color_host_remote:\x1d
+SETUVAR fish_color_keyword:\x1d
+SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
+SETUVAR fish_color_normal:normal
+SETUVAR fish_color_operator:00a6b2
+SETUVAR fish_color_option:\x1d
+SETUVAR fish_color_param:7aa6da
+SETUVAR fish_color_quote:b9ca4a
+SETUVAR fish_color_redirection:70c0b1
+SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_status:red
+SETUVAR fish_color_user:brgreen
+SETUVAR fish_color_valid_path:\x2d\x2dunderline
+SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR fish_pager_color_background:\x1d
+SETUVAR fish_pager_color_completion:normal
+SETUVAR fish_pager_color_description:B3A06D
+SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
+SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_pager_color_secondary_background:\x1d
+SETUVAR fish_pager_color_secondary_completion:\x1d
+SETUVAR fish_pager_color_secondary_description:\x1d
+SETUVAR fish_pager_color_secondary_prefix:\x1d
+SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_pager_color_selected_completion:\x1d
+SETUVAR fish_pager_color_selected_description:\x1d
+SETUVAR fish_pager_color_selected_prefix:\x1d

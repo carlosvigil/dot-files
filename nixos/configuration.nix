@@ -131,7 +131,7 @@
     dash
     kitty
     bat
-    lf       
+    lf
     zoxide
     fd
     fzf
