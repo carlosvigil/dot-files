@@ -32,18 +32,6 @@ output DP-1 mode 2560x1440 position 2048,0 scale 1.25
 output HDMI-A-2 mode 1920x1200 position 848,0 transform 270
 
 
-### IDLE CONFIGURATION
-
-exec swayidle -w \
-	timeout 300 'swaylock -f -c 000000' \
-	timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-	before-sleep 'swaylock -f -c 000000'
-
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
-
 ### INPUT CONFIGURATION
 input 1133:49288:Logitech_G_Pro_Wireless_Gaming_Mouse {
 	natural_scroll enabled
@@ -209,18 +197,41 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+### CUSTOM RULES
+for_window [title="Picture in picture"] floating enable
+
+
 ### APPEARANCE
 ## GAPS
 gaps inner 4
 gaps outer 2
 smart_gaps on
 
+## COLORS
+
+
 
 ## STATUS BAR:
 # Read `man 5 sway-bar` for more information about this section.
 bar {
 	swaybar_command waybar
-	position bottom
 }
+
+### IDLE CONFIGURATION
+
+exec swayidle -w \
+	timeout 300 'swaylock -f -c 000000' \
+	timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+	before-sleep 'swaylock -f -c 000000'
+
+# Enables inhibiting of locking
+exec_always inhibit-bridge
+
+# inhibit-bridge will toggle manual inhibit state on receiving SIGUSR1
+bindsym $mod+shift+z exec bash -c 'killall -USR1 inhibit-bridge'
+
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
 
 include /etc/sway/config.d/*

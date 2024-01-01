@@ -1,0 +1,22 @@
+set hidden true
+set mouse true
+set tabstop 3
+set wrapscroll true
+set icons true
+
+cmd toggle_preview %{{
+	if [ "$lf_preview" = "true" ]; then
+		lf -remote "send $id :set preview false; set ratios 1:3:5"
+	else
+		lf -remote "send $id :set preview true; set ratios 1:3:5:8"
+	fi
+}}
+
+map zp toggle_preview
+
+cmd edit-config ${{
+	$EDITOR ~/.config/lf/lfrc
+	lf -remote "send $id source ~/.config/lf/lfrc"
+}}
+
+map C edit-config
