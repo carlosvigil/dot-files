@@ -12,6 +12,7 @@ map <a-o> new_folder_with_select
 map zp toggle_preview
 map C edit_config
 map <c-c> :copy_to_clipboard
+map <enter> shell
 
 cmd copy_to_clipboard %{{
 	if type pbcopy > /dev/null 2>&1; then

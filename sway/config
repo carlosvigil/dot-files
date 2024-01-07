@@ -37,10 +37,10 @@ for_window [title="Picture in picture"] sticky enable
 
 ### APPEARANCE
 ## GAPS
-gaps top 2
-gaps bottom 1
-gaps left 1
-gaps right 1
+gaps inner 8
+gaps top -2
+gaps bottom -5
+gaps horizontal -5
 smart_gaps on
 smart_borders on
 
@@ -49,11 +49,13 @@ default_border pixel 2
 
 ## COLORS
 # Set wallpaper:
-exec swaybg -i ~/backgrounds/3.jpg
+set $BGS $HOME/backgrounds
+output * background #000000 solid_color
+output * background `find $BGS -type f | shuf -n 1` fill
 
 # Title format for windows
-for_window [shell="xdg_shell"] title_format "%title (%app_id)"
-for_window [shell="x_wayland"] title_format "%class - %title"
+#for_window [shell="xdg_shell"] title_format "%title (%app_id)"
+#for_window [shell="x_wayland"] title_format "%class - %title"
 
 # class                 border  bground text    indicator child_border
 client.focused          #ebbcba #6272A4 #F8F8F2 #403d52   #403d52

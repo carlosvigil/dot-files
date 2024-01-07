@@ -50,7 +50,7 @@ bindsym $mod+shift+z exec bash -c 'killall -USR1 inhibit-bridge'
 bindsym $mod+q kill
 
 # Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+q exec swaymsg exit
+bindsym $mod+Shift+q exec wlogout
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
