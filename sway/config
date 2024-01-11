@@ -14,8 +14,10 @@ include /etc/sway/config-vars.d/*
 exec_always inhibit-bridge
 
 
+
 ### Output Displays
 exec_always kanshi
+
 
 
 ### INPUT CONFIGURATION
@@ -23,17 +25,26 @@ exec_always kanshi
 # Read `man 5 sway-input` for more information about this section.
 
 input 1133:49288:Logitech_G_Pro_Wireless_Gaming_Mouse {
+	pointer_accel 0.0
+	accel_profile flat
 	natural_scroll enabled
+	scroll_factor 3.0
 }
 
 input 1452:627:bcm5974 {
 	natural_scroll enabled
+	pointer_accel 0.0
+	accel_profile adaptive
+	scroll_factor 0.64
+	#tap disabled
 }
+
 
 
 ### CUSTOM RULES
 for_window [title="Picture in picture"] floating enable
 for_window [title="Picture in picture"] sticky enable
+
 
 
 ### APPEARANCE
@@ -48,6 +59,7 @@ smart_borders off
 # Hide titlebar on windows:
 #default_border pixel 2
 
+
 ## COLORS
 # Set wallpaper:
 set $BGS $HOME/backgrounds
@@ -59,25 +71,37 @@ output * background `find $BGS -type f | shuf -n 1` fill
 #for_window [shell="x_wayland"] title_format "%class - %title"
 
 include rose_pine
-# CLASS                   BORDER    BACKG     TEXT    INDICA.  CHILD_B
+# CLASS                   BORDER    BACKG     TEXT     INDICA.  CHILD_B
 client.focused_tab_title  $overlay  $surface  $iris
-client.focused            $pine     $overlay  $text   $foam    $pine
-client.focused_inactive   $pine     $surface  $pine   $subtle  $hlMed
-client.unfocused          $hlLow    $base     $muted  $hlHigh  $hlLow
-client.urgent             $love     $surface  $love   $gold    $love
+client.focused            $pine     $overlay  $text    $foam    $pine
+client.focused_inactive   $pine     $surface  $subtle  $subtle  $hlMed
+client.unfocused          $hlLow    $base     $muted   $hlHigh  $hlLow
+client.urgent             $love     $surface  $love    $gold    $love
 
 # Less blue
 exec gammastep -c $HOME/.config/gammastep/gammastep.conf
 
+# GTK
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+	gsettings set $gnome-schema gtk-theme 'Rose-pine-gtk'
+	gsettings set $gnome-schema icon-theme 'Rose-pine-icons'
+	#gsettings set $gnome-schema cursor-theme ''
+	gsettings set $gnome-schema font-name 'Noto Sans'
+}
+
 
 ## NOTIFICATIONS
 exec swaync
+
 
 ## STATUS BAR:
 # Read `man 5 sway-bar` for more information about this section.
 bar {
 	swaybar_command waybar
 }
+
 
 
 ### IDLE CONFIGURATION
