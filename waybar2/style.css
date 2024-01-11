@@ -1,0 +1,33 @@
+@import "../shared/rose-pine.css";
+
+
+* {
+	color: @subtle;
+	font-family: MonaspiceAr Nerd Font Propo;
+	font-weight: 500;
+	font-size: 10pt;
+	min-height: 0;
+}
+
+#memory {
+	color: @foam;
+}
+
+#temperature {
+	color: @rose;
+}
+
+window#waybar {
+	background: rgba(0, 0, 0, 0.33);
+}
+
+#workspaces button {
+	background: rgba(0, 0, 0, 0.5);
+	padding: 0px 4px;
+	margin: 2px 8px;
+	border-radius: 16;
+}
+
+#clock {
+	background: rgba(0, 0, 0, 0.5);
+}

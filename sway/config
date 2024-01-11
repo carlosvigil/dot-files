@@ -10,6 +10,9 @@ set $menu rofi -show drun | xargs swaymsg exec --
 
 include /etc/sway/config-vars.d/*
 
+# Enables inhibiting of locking
+exec_always inhibit-bridge
+
 
 ### Output Displays
 exec_always kanshi
@@ -27,8 +30,6 @@ input 1452:627:bcm5974 {
 	natural_scroll enabled
 }
 
-mouse_warping container
-
 
 ### CUSTOM RULES
 for_window [title="Picture in picture"] floating enable
@@ -42,10 +43,10 @@ gaps top -2
 gaps bottom -5
 gaps horizontal -5
 smart_gaps on
-smart_borders on
+smart_borders off
 
 # Hide titlebar on windows:
-default_border pixel 2
+#default_border pixel 2
 
 ## COLORS
 # Set wallpaper:
@@ -57,16 +58,17 @@ output * background `find $BGS -type f | shuf -n 1` fill
 #for_window [shell="xdg_shell"] title_format "%title (%app_id)"
 #for_window [shell="x_wayland"] title_format "%class - %title"
 
-# class                 border  bground text    indicator child_border
-client.focused          #ebbcba #6272A4 #F8F8F2 #403d52   #403d52
-client.focused_inactive #21202e #44475A #F8F8F2 #44475A   #403d52
-client.unfocused        #21202e #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #ebbcba #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #21202e #282A36 #F8F8F2 #282A36   #282A36
-client.background       #ebbcba
+include rose_pine
+# CLASS                   BORDER    BACKG     TEXT    INDICA.  CHILD_B
+client.focused_tab_title  $overlay  $surface  $iris
+client.focused            $pine     $overlay  $text   $foam    $pine
+client.focused_inactive   $pine     $surface  $pine   $subtle  $hlMed
+client.unfocused          $hlLow    $base     $muted  $hlHigh  $hlLow
+client.urgent             $love     $surface  $love   $gold    $love
 
 # Less blue
 exec gammastep -c $HOME/.config/gammastep/gammastep.conf
+
 
 ## NOTIFICATIONS
 exec swaync
@@ -84,13 +86,6 @@ exec swayidle -w \
 	timeout 300 'swaylock -f -c 000000' \
 	timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 	before-sleep 'swaylock -f -c 000000'
-
-# Enables inhibiting of locking
-exec_always inhibit-bridge
-
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
 
 include keys
