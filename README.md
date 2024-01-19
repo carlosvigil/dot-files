@@ -17,11 +17,16 @@ smoother.
 The mac mini shorted. Using linux fulltime now. Helix was nicer than vim, but I
 started to miss features, and reading some of the repo discussions discouraged
 me from having a positive outlook on its future. Configuring was breezier, but
-some things didn't have expected or intuitive behaviour.  
+some things didn't have expected nor intuitive behaviour.  
 - i don't know how to em dash on linux, December 23, 2023
 
+Sway and foot isn't so nice. Wezterm was unusable, Kitty is best. Keyd is great,
+ but need to test X/Kmonad on current linux deb-trixie and macos. 
+I learned how to em dash on linux.
+— January 18, 2024
+
 ## TODO:
-- fix vim-fugi keymaps
+  fix current waybar
 - pick a tiling window manager
 - figure out how to connect audio interface
-
+- lookup how color profile

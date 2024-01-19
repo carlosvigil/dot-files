@@ -1,4 +1,4 @@
-theme = 'rose_pine'
+theme = 'no-bg'
 
 [editor]
 shell = ['zsh', '-c']
@@ -91,8 +91,8 @@ o = 'file_picker_in_current_buffer_directory'
 [keys.normal.'space'.b]
 b = 'buffer_picker'
 n = ':new'
-c = ':buffer-close'
-C = ':buffer-close!'
+q = ':buffer-close'
+Q = ':buffer-close!'
 o = ':buffer-close-others'
 O = ':buffer-close-others!'
 

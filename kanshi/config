@@ -1,7 +1,7 @@
-profile dual {
+profile default {
 	output eDP-1 disable
-	output DP-1 enable mode 2560x1440@119.998Hz position 1200,0 scale 1
-	output HDMI-A-2 enable mode 1920x1200 position 0,0 transform 90 scale 1
+	output DP-1 enable mode 2560x1440@119.998Hz position 960,0 scale 1.5 transform normal
+	output HDMI-A-2 enable mode 1920x1200@59.950Hz position 0,0 scale 1.25 transform 90
 	exec swaymsg workspace 1, move workspace to DP-1
 }
 
