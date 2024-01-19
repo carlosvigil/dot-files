@@ -1,0 +1,36 @@
+## GAPS
+gaps inner 8
+gaps top -2
+gaps bottom -5
+gaps horizontal -5
+smart_gaps on
+smart_borders off
+
+# Hide titlebar on windows:
+default_border pixel 2
+
+
+## COLORS
+# Set wallpaper:
+output * background #000000 solid_color
+
+include rose_pine
+# CLASS                   BORDER    BACKG     TEXT     INDICA.  CHILD_B
+client.focused_tab_title  $overlay  $surface  $iris
+client.focused            $pine     $overlay  $text    $foam    $pine
+client.focused_inactive   $pine     $surface  $subtle  $subtle  $hlMed
+client.unfocused          $hlLow    $base     $muted   $hlHigh  $hlLow
+client.urgent             $love     $surface  $love    $gold    $love
+
+# Less blue
+exec gammastep -c $HOME/.config/gammastep/gammastep.conf
+
+# GTK
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+	gsettings set $gnome-schema gtk-theme  'Rose-pine-gtk'
+	gsettings set $gnome-schema icon-theme 'Rose-pine-icons'
+	gsettings set $gnome-schema font-name  'Noto Sans'
+	gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+}

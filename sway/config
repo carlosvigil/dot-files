@@ -1,7 +1,7 @@
 # Default config for sway
 # Read `man 5 sway` for a complete reference.
 
-set $term foot
+set $term kitty
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -9,9 +9,6 @@ set $term foot
 set $menu rofi -show drun | xargs swaymsg exec --
 
 include /etc/sway/config-vars.d/*
-
-# Enables inhibiting of locking
-exec_always inhibit-bridge
 
 
 
@@ -28,7 +25,7 @@ input 1133:49288:Logitech_G_Pro_Wireless_Gaming_Mouse {
 	pointer_accel 0.0
 	accel_profile flat
 	natural_scroll enabled
-	scroll_factor 3.0
+	scroll_factor 1
 }
 
 input 1452:627:bcm5974 {
@@ -40,6 +37,16 @@ input 1452:627:bcm5974 {
 }
 
 
+## KEYBINDS
+include keys
+
+
+
+### OPTIONS
+default_orientation auto
+workspace_auto_back_and_forth yes
+
+
 
 ### CUSTOM RULES
 for_window [title="Picture in picture"] floating enable
@@ -47,49 +54,13 @@ for_window [title="Picture in picture"] sticky enable
 
 
 
+### Startup
+exec microsoft-edge --ozone-platform-hint=auto
+
+
+
 ### APPEARANCE
-## GAPS
-gaps inner 8
-gaps top -2
-gaps bottom -5
-gaps horizontal -5
-smart_gaps on
-smart_borders off
-
-# Hide titlebar on windows:
-#default_border pixel 2
-
-
-## COLORS
-# Set wallpaper:
-set $BGS $HOME/backgrounds
-output * background #000000 solid_color
-output * background `find $BGS -type f | shuf -n 1` fill
-
-# Title format for windows
-#for_window [shell="xdg_shell"] title_format "%title (%app_id)"
-#for_window [shell="x_wayland"] title_format "%class - %title"
-
-include rose_pine
-# CLASS                   BORDER    BACKG     TEXT     INDICA.  CHILD_B
-client.focused_tab_title  $overlay  $surface  $iris
-client.focused            $pine     $overlay  $text    $foam    $pine
-client.focused_inactive   $pine     $surface  $subtle  $subtle  $hlMed
-client.unfocused          $hlLow    $base     $muted   $hlHigh  $hlLow
-client.urgent             $love     $surface  $love    $gold    $love
-
-# Less blue
-exec gammastep -c $HOME/.config/gammastep/gammastep.conf
-
-# GTK
-set $gnome-schema org.gnome.desktop.interface
-
-exec_always {
-	gsettings set $gnome-schema gtk-theme 'Rose-pine-gtk'
-	gsettings set $gnome-schema icon-theme 'Rose-pine-icons'
-	#gsettings set $gnome-schema cursor-theme ''
-	gsettings set $gnome-schema font-name 'Noto Sans'
-}
+include appearance
 
 
 ## NOTIFICATIONS
@@ -99,7 +70,12 @@ exec swaync
 ## STATUS BAR:
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-	swaybar_command waybar
+	swaybar_command swaybar
+	mode hide
+	hidden_state hide
+	modifier Mod4
+
+	tray_output primary
 }
 
 
@@ -107,10 +83,9 @@ bar {
 ### IDLE CONFIGURATION
 
 exec swayidle -w \
-	timeout 300 'swaylock -f -c 000000' \
-	timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+	timeout 600 'swaylock -f -c 000000' \
+	timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 	before-sleep 'swaylock -f -c 000000'
 
 
-include keys
 include /etc/sway/config.d/*

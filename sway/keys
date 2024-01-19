@@ -9,13 +9,17 @@ set $up o
 set $right i
 
 ## Brightness keys 
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+#using brightnessctl
+#bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+#bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
-#bindsym XF86MonBrightnessUp exec light -A 1
-#bindsym XF86MonBrightnessDown exec light -U 3
-#bindsym XF86KbdBrightnessUp exec light -s sysfs/leds/smc::kbd_backlight -A 1
-#bindsym XF86KbdBrightnessDown exec light -s sysfs/leds/smc::kbd_backlight -U 3
+#using light
+bindsym XF86MonBrightnessUp exec light -A 1
+bindsym XF86MonBrightnessDown exec light -U 3
+
+# macbook key lights
+bindsym XF86KbdBrightnessUp exec light -s sysfs/leds/smc::kbd_backlight -A 1
+bindsym XF86KbdBrightnessDown exec light -s sysfs/leds/smc::kbd_backlight -U 3
 
 ## Volume, limited to 100% (-l 1.0)
 bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%+
@@ -30,8 +34,9 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 
+bindsym $mod+c exec 'kitty -l -c, hx ~/.config'
+
 # Reload the configuration file
-bindsym $mod+c exec $term hx ~/.config/sway/config
 bindsym $mod+Shift+c reload
 
 # Start a terminal
@@ -43,8 +48,9 @@ bindsym $mod+Space exec $menu
 # Toggle control center
 bindsym $mod+m exec swaync-client -t -sw
 
-# inhibit-bridge will toggle manual inhibit state on receiving SIGUSR1
-bindsym $mod+shift+z exec bash -c 'killall -USR1 inhibit-bridge'
+# Inhibit idle locking
+bindsym $mod+z inhibit_idle open
+bindsym $mod+shift+z inhibit_idle none
 
 # Kill focused window
 bindsym $mod+q kill
@@ -120,15 +126,12 @@ bindgesture pinch:inward+right move right
 
 
 ## LAYOUT STUFF:
-# You can "split" the current object of your focus with
-# $mod+b or $mod+v, for horizontal and vertical splits
-# respectively.
 bindsym $mod+w splith
 bindsym $mod+l splitv
 
 # Switch the current container between different layout styles
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
+bindsym $mod+s layout split toggle
+bindsym $mod+t layout toggle all
 bindsym $mod+d layout toggle split
 
 # Make the current focus fullscreen
@@ -146,10 +149,10 @@ bindsym $mod+p focus parent
 
 ## SCRATCHPAD:
 # Move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+bracketright move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
-bindsym $mod+minus scratchpad show
+bindsym $mod+bracketleft scratchpad show
 # If there are multiple scratchpad windows, this command cycles through them.
 
 
