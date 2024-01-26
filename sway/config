@@ -6,8 +6,7 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu rofi -show drun | xargs swaymsg exec --
-
+set $menu dmenu_path | wmenu -bi -l 10 -p 'dmenu_path | wmenu' | xargs swaymsg exec --
 include /etc/sway/config-vars.d/*
 
 
@@ -75,6 +74,8 @@ bar {
 	hidden_state hide
 	modifier Mod4
 
+	status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+
 	tray_output primary
 }
 
@@ -83,8 +84,9 @@ bar {
 ### IDLE CONFIGURATION
 
 exec swayidle -w \
-	timeout 600 'swaylock -f -c 000000' \
-	timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+	timeout 1200 'swaylock -f -c 000000' \
+	timeout 1800 'swaymsg "output * power off"'\
+	resume 'swaymsg "output * power on"' \
 	before-sleep 'swaylock -f -c 000000'
 
 

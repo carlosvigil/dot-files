@@ -14,27 +14,27 @@ set $right i
 #bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 #using light
-bindsym XF86MonBrightnessUp exec light -A 1
-bindsym XF86MonBrightnessDown exec light -U 3
+bindsym --locked XF86MonBrightnessUp exec light -A 1
+bindsym --locked XF86MonBrightnessDown exec light -U 3
 
 # macbook key lights
-bindsym XF86KbdBrightnessUp exec light -s sysfs/leds/smc::kbd_backlight -A 1
-bindsym XF86KbdBrightnessDown exec light -s sysfs/leds/smc::kbd_backlight -U 3
+bindsym --locked XF86KbdBrightnessUp exec light -s sysfs/leds/smc::kbd_backlight -A 1
+bindsym --locked XF86KbdBrightnessDown exec light -s sysfs/leds/smc::kbd_backlight -U 3
 
 ## Volume, limited to 100% (-l 1.0)
-bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%+
-bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-
-bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 1%+
+bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-
+bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 ## Media Controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl -a pause
-bindsym XF86AudioStop exec playerctl -a stop
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioPause exec playerctl -a pause
+bindsym --locked XF86AudioStop exec playerctl -a stop
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
 
 
-bindsym $mod+c exec 'kitty -l -c, hx ~/.config'
+bindsym $mod+c exec $term hx ~/.config
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
