@@ -22,11 +22,24 @@ some things didn't have expected nor intuitive behaviour.
 
 Sway and foot isn't so nice. Wezterm was unusable, Kitty is best. Keyd is great,
  but need to test X/Kmonad on current linux deb-trixie and macos. 
-I learned how to em dash on linux.
+I learned how to em dash on linux.  
 — January 18, 2024
 
+I switched NixOS again after trying to use debian again. It's far too convenient
+to declaratively install apps and have a single file for the majority of the 
+system while also not worrying about dependency issues. The trade off is 
+configuring certain things with nix and it's syntax, which have been painful at 
+times. I switched to Hyprland from Sway because it seems like X-window has many 
+core issues. But, since X will probably still "work" I am open to trying Kmonad,
+in particular, because I can use it on MacOS, and further because of Haskell. 
+Keyd is delightfully simple. I've yet to use waybar or look at other options. I 
+also haven't bothered with a display/login/session manager. Or a lock yet.  
+— Febuary 2nd, 2024
+
+
 ## TODO:
-  fix current waybar
-- pick a tiling window manager
+- fix current waybar
+- pick a tiling window manager (currenty on hypr, wondering if xmonad)
 - figure out how to connect audio interface
-- lookup how color profile
+- lookup how to monitor color profile
+- add a lock & disable auto-login
