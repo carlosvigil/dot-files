@@ -10,15 +10,19 @@ node_modules/
 .config/google-chrome
 .config/google-chrome-unstable
 .config/microsoft-edge
+.config/wootility-lekker
 .cursor
 .dlv
 .docker
+.icons
 .erg
 .gem
 .gnupg
 .lesshst
 .local
 .mozilla
+.nix-defexpr
+.nix-profile
 .npm
 .orbstack
 .pki
@@ -26,6 +30,7 @@ node_modules/
 .rustup
 .ssh
 .swp
+.themes
 .tldrc
 .tool-versions
 .vim

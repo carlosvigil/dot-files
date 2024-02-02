@@ -1,0 +1,40 @@
+# Vimium Extension Keymapping
+map n scrollLeft
+map i scrollRight
+map o scrollUp
+map e scrollDown
+
+map N goBack
+map I goForward
+map O previousTab
+map E nextTab
+
+map zN scrollToLeft
+map zI scrollToRight
+
+map f Vomnibar.activate
+map F Vomnibar.activateInNewTab
+
+map h LinkHints.activateMode
+map H LinkHints.activateModeToOpenInNewTab
+map <a-h> LinkHints.activateModeWithQueue
+map / Vomnibar.activateTabSelection
+
+map u visitPreviousTab
+map T restoreTab
+
+unmap r
+unmap s
+unmap c
+unmap d
+unmap m
+
+unmap j
+unmap k
+unmap l
+unmap J
+unmap K
+unmap L
+unmap zL
+unmap zH
+unmap v
