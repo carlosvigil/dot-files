@@ -8,6 +8,7 @@
 	imports =
 		[ # Include the results of the hardware scan.
 			./hardware-configuration.nix
+			./dev-env.nix
 			./keyd.nix
 		];
 
@@ -67,12 +68,12 @@
 		jack.enable       = true;
 	};
 
-
 	# GRAPHICS
 	hardware = {
 		opengl.enable = true;
 	};
 
+	# WINDOWS
 	programs.hyprland = {
 		enable          = true;
 		xwayland.enable = true;
@@ -80,6 +81,13 @@
 	programs.waybar.enable = true;
 	environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+	systemd.user.services.kanshi = {
+		description = "kanshi daemon";
+		serviceConfig = {
+			Type = "simple";
+			ExecStart = ''${pkgs.kanshi}/bin/kanshi -c /home/c/.config/kanshi/config'';
+		};
+	};
 
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
@@ -92,8 +100,9 @@
 		shellAbbrs = {
 			h = "hx";
 			x = "exit";
-			nixcon = "sudo hx /etc/nixos/configuration.nix";
-			conf = "hx /home/c/.config/";
+			mans = "complete -C\"\" | fzf | xargs man";
+			nixconf = "sudo hx /etc/nixos/configuration.nix";
+			conf = "sudo hx /home/c/.config/";
 			sofish = "source /home/c/.config/fish/config.fish";
 			mellc = "cd /home/c/local/MELLC-metarepo/";
 		};
@@ -107,34 +116,15 @@
 
 		shells = with pkgs; [ fish dash ];
 
-		variables = { EDITOR = "hx"; };
+		variables = { EDITOR = "hx"; MANPAGER = "bat"; };
 		
 		# PACKAGES system
 		# $ nix search wget
 		systemPackages = with pkgs; [
 			dash
-			curl
-			wget
-
 			helix
 
 			lf
-			bat
-			fzf
-			ripgrep
-
-			tldr
-
-			neofetch
-			btop
-
-			playerctl
-			networkmanagerapplet
-			gammastep
-
-			keyd
-			wootility
-			wooting-udev-rules
 		];
 	};
 
@@ -147,27 +137,57 @@
 
 		# PACKAGES user
 		packages = with pkgs; [
-			kitty
-			foot
+			# terminal
+			kitty # main term
+			foot # performant term, with client/server
 
-			dmenu
-			wmenu
+			# cli
+			curl
+			wget
+			unzip
+			openssl_3_2
+			killall
 
-			# git
+			## git
 			gh
 			pinentry
-			gh-dash
+			gh-dash # gh dashboard
 
+			## cli tool upgrades
+			bat # cat replacement, auto calls pager
+			fd # better find
+			fzf # fuzzy finder
+			ripgrep
+			btop # process/resource dashboard
+
+			## less important cli tools
+			neofetch # pretty sys info
+			tldr # cli commands snippets
+			toipe # typing test
+
+			# tiling window manager supplements
+			dmenu
+			wmenu # wayland launcher tool
+			networkmanagerapplet # network applet
+			kanshi # wayland display profiles
+			gammastep # reduce blue light
+
+			# hw tools
+			cyme # usb
+			playerctl # media play
+			keyd # keyremapper
+			wootility # proprietary keyboard config
+			wooting-udev-rules # req for propriety keyboard config via browser
+
+			# gui
 			spotify
-
 			microsoft-edge
 			google-chrome
-
 			vscode
-
-			toipe
 		];
 	};
+
+	environment.pathsToLink = [ "/share/fish" ];
 
 	# Enable automatic login for the user.
 	services.getty.autologinUser = "c";
@@ -193,11 +213,10 @@
 
 	programs.gnupg.agent = {
 		enable                = true;
-		# enableSSHSupport    = true;
-		# enableBrowserSocket = true;
-		pinentryFlavor        = null;
+		enableSSHSupport    = true;
+		enableBrowserSocket = true;
+		pinentryFlavor        = "curses";
 	};
-
 
 	# List services that you want to enable:
 
