@@ -25,7 +25,7 @@ f12 = volumeup
 
 [control+shift]
 
-1 = toggle(qwerty)
+f1 = toggle(qwerty)
 
 
 [nav]

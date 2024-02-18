@@ -75,7 +75,13 @@
 		opengl.enable = true;
 	};
 
-	# WINDOWS
+	# DESKTOP
+	xdg.portal = {
+		enable = true;
+		extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+	};
+
+	## WINDOWS
 	programs.hyprland = {
 		enable          = true;
 		xwayland.enable = true;
@@ -102,9 +108,10 @@
 		shellAbbrs = {
 			      h = "hx";
 			      x = "exit";
+			    man = "batman";
 			   mans = "complete -C\"\" | fzf | xargs man";
 			nixconf = "sudo hx /etc/nixos/configuration.nix";
-			   conf = "sudo hx /home/c/.config/";
+			   conf = "sudo hx --working-dir /home/c/.config";
 			 sofish = "source /home/c/.config/fish/config.fish";
 			  mellc = "cd /home/c/local/MELLC-metarepo/";
 		};
@@ -120,7 +127,7 @@
 
 		variables = {
 			EDITOR = "hx";
-			MANPAGER = "batman";
+			BATDIFF_USE_DELTA = "true";
 		};
 		
 		# PACKAGES system
@@ -145,7 +152,6 @@
 			# terminal
 			kitty # main term
 			foot # performant term, with client/server
-			wezterm
 
 			# cli
 			curl
@@ -163,7 +169,6 @@
 			## cli tool upgrades
 			bat # cat replacement, auto calls pager
 			bat-extras.batman
-			bat-extras.batpipe
 			bat-extras.batgrep
 			bat-extras.batdiff
 			bat-extras.batwatch
@@ -178,6 +183,7 @@
 			neofetch # pretty sys info
 			tldr # cli commands snippets
 			toipe # typing test
+			appimage-run
 
 			# tiling window manager supplements
 			dmenu
@@ -200,11 +206,11 @@
 			vscode
 		];
 	};
-
-	environment.pathsToLink = [ "/share/fish" ];
+	
+	environment.pathsToLink = [ "/share/fish" "/home/c/bin" ];
 
 	# Enable automatic login for the user.
-	# services.getty.autologinUser = "c";
+	services.getty.autologinUser = "c";
 
 	fonts = {
 		packages = with pkgs; [

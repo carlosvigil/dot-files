@@ -36,5 +36,5 @@ m = m
 . = .
 / = /
 
-d = timeout(d, 175, layer(nav))
-o = timeout(o, 225, layer(control))
+d = timeout(d, 185, layer(nav))
+o = timeout(o, 200, layer(control))

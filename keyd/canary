@@ -29,5 +29,5 @@ m = h
 . = ,
 / = .
 
-d = timeout(s, 175, layer(nav))
-o = timeout(u, 225, layer(control))
+d = timeout(s, 185, layer(nav))
+o = timeout(u, 200, layer(control))
