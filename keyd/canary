@@ -1,5 +1,3 @@
-[canary:layout]
-
 q = w
 w = l
 e = y
@@ -8,11 +6,11 @@ t = k
 y = z
 u = x
 i = o
-o = u
+#o = u
 p = ;
 a = c
 s = r
-d = s
+#d = s
 f = t
 g = b
 h = f
@@ -30,3 +28,6 @@ m = h
 , = /
 . = ,
 / = .
+
+d = timeout(s, 175, layer(nav))
+o = timeout(u, 225, layer(control))

@@ -9,7 +9,7 @@
 		[ # Include the results of the hardware scan.
 			./hardware-configuration.nix
 			./dev-env.nix
-			./keyd.nix
+			# ./keyd.nix
 		];
 
 	# Bootloader.
@@ -49,6 +49,8 @@
 		layout = "us";
 		xkbVariant = "";
 	};
+
+	services.keyd.enable = true;
 
 	# Wooting Keyboard
 	hardware.wooting.enable = true;
@@ -98,13 +100,13 @@
 		enable = true;
 		loginShellInit = "exec Hyprland";
 		shellAbbrs = {
-			h = "hx";
-			x = "exit";
-			mans = "complete -C\"\" | fzf | xargs man";
+			      h = "hx";
+			      x = "exit";
+			   mans = "complete -C\"\" | fzf | xargs man";
 			nixconf = "sudo hx /etc/nixos/configuration.nix";
-			conf = "sudo hx /home/c/.config/";
-			sofish = "source /home/c/.config/fish/config.fish";
-			mellc = "cd /home/c/local/MELLC-metarepo/";
+			   conf = "sudo hx /home/c/.config/";
+			 sofish = "source /home/c/.config/fish/config.fish";
+			  mellc = "cd /home/c/local/MELLC-metarepo/";
 		};
 	};
 	users.defaultUserShell = pkgs.dash;
@@ -116,7 +118,10 @@
 
 		shells = with pkgs; [ fish dash ];
 
-		variables = { EDITOR = "hx"; MANPAGER = "bat"; };
+		variables = {
+			EDITOR = "hx";
+			MANPAGER = "batman";
+		};
 		
 		# PACKAGES system
 		# $ nix search wget
@@ -140,6 +145,7 @@
 			# terminal
 			kitty # main term
 			foot # performant term, with client/server
+			wezterm
 
 			# cli
 			curl
@@ -152,9 +158,17 @@
 			gh
 			pinentry
 			gh-dash # gh dashboard
+			delta
 
 			## cli tool upgrades
 			bat # cat replacement, auto calls pager
+			bat-extras.batman
+			bat-extras.batpipe
+			bat-extras.batgrep
+			bat-extras.batdiff
+			bat-extras.batwatch
+			entr
+			bat-extras.prettybat
 			fd # better find
 			fzf # fuzzy finder
 			ripgrep
@@ -190,7 +204,7 @@
 	environment.pathsToLink = [ "/share/fish" ];
 
 	# Enable automatic login for the user.
-	services.getty.autologinUser = "c";
+	# services.getty.autologinUser = "c";
 
 	fonts = {
 		packages = with pkgs; [
@@ -198,7 +212,11 @@
 			noto-fonts
 		];
 
-		fontconfig.defaultFonts.monospace = [ "Monaspace Argon" ];
+		fontconfig.defaultFonts = {
+			monospace = [ "MonaspiceAr Nerd Font Mono" ];
+			sansSerif = [ "Noto Sans" ];
+			    serif = [ "Noto Serif" ];
+		};
 
 		fontDir.enable = true;
 		fontconfig.hinting.style = "slight";
@@ -212,10 +230,10 @@
 	};
 
 	programs.gnupg.agent = {
-		enable                = true;
+		enable              = true;
 		enableSSHSupport    = true;
 		enableBrowserSocket = true;
-		pinentryFlavor        = "curses";
+		pinentryFlavor      = "curses";
 	};
 
 	# List services that you want to enable:

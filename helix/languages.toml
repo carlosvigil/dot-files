@@ -1,0 +1,125 @@
+[[language]]
+name = 'go'
+auto-format = true
+formatter = { command = 'goimports' }
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'crystal'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'java'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'ruby'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'c'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'cpp'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'rust'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'sql'
+language-servers = [ 'sql-language-server' ]
+indent = { tab-width = 3, unit = '\t' }
+
+[language-server.sql-language-server]
+command = 'sql-language-server'
+args = ['up', '--method', 'stdio']
+
+[[language]]
+name = 'python'
+language-servers = [ 'pyright', 'ruff' ]
+indent = { tab-width = 3, unit = '\t' }
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = 'basic'
+
+[language-server.ruff]
+command = 'ruff-lsp'
+
+[language-server.ruff.config.settings]
+args = ['--ignore', 'E501']
+
+[language.formatter]
+command = 'black'
+args = ['--line-length', '88', '--quiet', '-']
+
+[[language]]
+name = 'lua'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'html'
+language-servers = [ 'tailwindcss-ls', 'vscode-html-language-server' ]
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'css'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'scss'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'javascript'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'typescript'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'json'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'svelte'
+language-servers = [ 'svelteserver', 'tailwindcss-ls' ]
+roots = ['svelte.config.js']
+indent = { tab-width = 3, unit = '\t' }
+
+[language-server.tailwindcss-ls]
+command = 'tailwindcss-language-server'
+args = ['--stdio']
+
+[[language]]
+name = 'php'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'toml'
+formatter = { command = 'taplo', args = ['fmt', '-'] }
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'bash'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'env'
+indent = { tab-width = 3, unit = '\t' }
+
+[[language]]
+name = 'nix'
+indent = { tab-width = 3, unit = '\t' }
+# formatter = { command = 'nixpkgs-fmt' }
+
+ [language-server.typescript-language-server.config]
+ documentFormatting = false
+ hostInfo = 'helix'
+
+ [language-server.typescript-language-server.config.completions]
+completeFunctionCalls = true
+

@@ -8,9 +8,9 @@
 				"1a2c:95f6" # mkbox 70%
 				"31e3:1102" # wooting one
 			];
-		extraConfig = ''
-			
-		'';
+			extraConfig = ''
+		
+			'';
 			settings = {
 				global = {
 					"layer_indicator" = "1";
@@ -49,8 +49,8 @@
 					"/" = "dot";
 					"s+d" = "backspace";
 					"d+f" = "esc";
-					"j+k" = "enter";
-					"k+l" = "toggle(nav)";
+					"k+l" = "enter";
+					",+." = "toggle(nav)";
 					d = "timeout(s, 175, layer(nav))";
 					o = "timeout(u, 225, layer(control))";
 					capslock    = "overload(control, esc)";
@@ -58,7 +58,7 @@
 					space       = "timeout(space, 250, layer(shift))";
 					leftalt     = "layer(meta)";
 					leftmeta    = "layer(alt)";
-					leftcontrol = "toggle(qwerty)";
+					"leftcontrol+1" = "toggle(qwerty)";
 				};
 
 				shift = {
@@ -114,9 +114,9 @@
 			ids = [
 				"0c45:766b" # dierya 60%
 			];
-		extraConfig = ''
-			
-		'';
+			extraConfig = ''
+
+			'';
 			settings = {
 				global = {
 					"layer_indicator" = "1";
@@ -156,8 +156,8 @@
 					"rightshift" = "dot";
 					"s+d" = "backspace";
 					"d+f" = "esc";
-					"j+k" = "enter";
-					"k+l" = "toggle(nav)";
+					"k+l" = "enter";
+					",+." = "toggle(nav)";
 					d = "timeout(s, 175, layer(nav))";
 					o = "timeout(u, 225, layer(control))";
 					capslock    = "overload(control, esc)";
@@ -165,12 +165,12 @@
 					space       = "timeout(space, 250, layer(shift))";
 					leftalt     = "layer(meta)";
 					leftmeta    = "layer(alt)";
-					leftcontrol = "toggle(qwerty)";
+					"leftcontrol+1" = "toggle(qwerty)";
 				};
 
 				shift = {
 					leftshift = "capslock";
-					rightshift = "capslock";
+					rightshift = ">";
 					f11 = "volumedown";
 					f12 = "volumeup";
 				};
@@ -259,14 +259,14 @@
 					"/" = "dot";
 					"s+d" = "backspace";
 					"d+f" = "esc";
-					"j+k" = "enter";
-					"k+l" = "toggle(nav)";
+					"k+l" = "enter";
+					",+." = "toggle(nav)";
 					d = "timeout(s, 175, layer(nav))";
 					o = "timeout(u, 225, layer(control))";
 					capslock    = "overload(control, esc)";
 					leftshift   = "overload(shift, backspace)";
 					space       = "timeout(space, 250, layer(shift))";
-					leftcontrol = "toggle(qwerty)";
+					"leftcontrol+1" = "toggle(qwerty)";
 				};
 
 				shift = {

@@ -1,21 +1,18 @@
 [global]
 
-default_layout canary
 layer_indicator = 1
-chord_timeout = 25
+chord_timeout = 20
 
 
 [main]
 
 s+d = backspace
 d+f = esc
-j+k = enter
-k+l = toggle(nav)
-d = timeout(s, 225, layer(nav))
-k = timeout(e, 225, layer(control))
+k+l = enter
+,+. = toggle(nav)
 capslock = overload(control, esc)
 leftshift = overload(shift, backspace)
-space = overload(shift, space)
+space = timeout(space, 250, layer(shift))
 
 
 [shift]
@@ -28,8 +25,7 @@ f12 = volumeup
 
 [control+shift]
 
-1 = setlayout(canary)
-2 = setlayout(qwerty)
+1 = toggle(qwerty)
 
 
 [nav]

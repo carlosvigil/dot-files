@@ -1,5 +1,5 @@
 # ANSI
-[qwerty:layout]
+[qwerty]
 
 q = q
 w = w
@@ -9,14 +9,14 @@ t = t
 y = y
 u = u
 i = i
-o = o
+#o = o
 p = p
 [ = [
 ] = ]
 \ = \
 a = a
 s = s
-d = d
+#d = d
 f = f
 g = g
 h = h
@@ -35,3 +35,6 @@ m = m
 , = ,
 . = .
 / = /
+
+d = timeout(d, 175, layer(nav))
+o = timeout(o, 225, layer(control))

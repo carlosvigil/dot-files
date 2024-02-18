@@ -22,6 +22,7 @@
 		zls
 		rust-analyzer
 		gopls
+		gotools
 		sqls
 		nodePackages.pyright
 		ruff-lsp
@@ -29,6 +30,8 @@
 		sourcekit-lsp
 		haskell-language-server
 		lua-language-server
+		nil
+		nixpkgs-fmt
 
 		vscode-langservers-extracted
 		nodePackages.svelte-language-server
