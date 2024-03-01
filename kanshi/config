@@ -1,20 +1,16 @@
 profile default {
-	output eDP-1 disable
-	output DP-1 mode 2560x1440 position 1200,240 scale 1
-	output HDMI-A-2 mode 1920x1200 position 0,0 transform 90
-	#exec swaymsg workspace 1, move workspace to DP-1
+	output DP-1 position 1200,240
+	output HDMI-A-2 position 0,0 transform 90
 }
 
 profile main {
 	output eDP-1 disable
 	output DP-1 enable mode 2560x1440@119.998Hz position 0,0 scale 1
-	#exec swaymsg workspace 1, move workspace to DP-1
 }
 
 profile second {
 	output eDP-1 disable
 	output HDMI-A-2 enable mode 1920x1200 position 0,0 scale 1 transform 90
-	#exec swaymsg workspace 1, move workspace to HDMI-A-2
 }
 
 profile base {

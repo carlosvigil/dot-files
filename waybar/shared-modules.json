@@ -1,0 +1,20 @@
+{
+	"wlr/taskbar": {
+		"on-click": "activate",
+		"on-click-middle": "close"
+	},
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"on-click": "activate",
+		"on-scroll-up": "hyprctl dispatch workspace e-1",
+		"on-scroll-down": "hyprctl dispatch workspace e+1"
+	},
+	"hyprland/window": {
+		"align": 1,
+		"max-length": 80,
+		"seperate-outputs": true
+	},
+	"tray": {
+		"spacing": 4
+	}
+}

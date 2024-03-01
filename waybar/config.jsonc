@@ -1,0 +1,55 @@
+[
+	{
+		"output": [
+			"eDP-1",
+			"DP-1"
+		],
+		"include": [
+			"/home/c/.config/waybar/shared-modules.json",
+			"/home/c/.config/waybar/vertical-modules.json"
+		],
+		"layer": "top",
+		"position": "left",
+		"spacing": 16,
+		"modules-left": [
+			"hyprland/workspaces",
+			"wlr/taskbar"
+		],
+		"modules-center": [
+			"hyprland/window"
+		],
+		"modules-right": [
+			"tray",
+			"network",
+			"pulseaudio",
+			"memory",
+			"clock",
+			"clock#2"
+		]
+	},
+	{
+		"output": "HDMI-A-2",
+		"include": [
+			"/home/c/.config/waybar/shared-modules.json",
+			"/home/c/.config/waybar/horizontal-modules.json"
+		],
+		"layer": "top",
+		"position": "top",
+		"spacing": 16,
+		"modules-left": [
+			"hyprland/workspaces",
+			"wlr/taskbar"
+		],
+		"modules-center": [
+			"hyprland/window"
+		],
+		"modules-right": [
+			"tray",
+			"network",
+			"pulseaudio",
+			"memory",
+			"clock",
+			"clock#2"
+		]
+	}
+]

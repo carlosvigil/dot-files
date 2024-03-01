@@ -12,7 +12,7 @@ k+l = enter
 ,+. = toggle(nav)
 capslock = overload(control, esc)
 leftshift = overload(shift, backspace)
-space = timeout(space, 250, layer(shift))
+space = timeout(space, 200, layer(shift))
 
 
 [shift]

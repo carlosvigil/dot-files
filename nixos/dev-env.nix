@@ -6,13 +6,13 @@
 		zig
 		rustup
 		go
-		nodenv
+		nodePackages_latest.nodejs
 		deno
 		bun
 		python3
-		ruby_3_3
-		swift
-		ghc
+		# ruby_3_3
+		# swift
+		# ghc
 
 		# PNPM
 		nodePackages.pnpm

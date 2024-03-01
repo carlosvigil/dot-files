@@ -1,0 +1,45 @@
+@import "../shared/rose-pine.css";
+
+
+* {
+	color: @subtle;
+	font-family: "NotoSans Nerd Font";
+	font-weight: 500;
+	font-size: 13pt;
+	min-height: 0px;
+}
+
+#pulseaudio {
+	color: @gold;
+}
+
+#memory {
+	color: @foam;
+}
+
+#clock {
+	color: @iris;
+}
+
+
+#clock.2 {
+	color: @subtle;
+}
+
+window#waybar {
+	/* background: rgba(0, 0, 0, 0.33); */
+	background: black;
+}
+
+#workspaces button {
+	/* background: rgba(0, 0, 0, 0.5); */
+	background: black;
+	padding: 0px 4px;
+	margin: 2px 8px;
+	border-radius: 16px;
+}
+
+#workspaces button:active {
+	/* background: rgba(0, 0, 0, 0.9); */
+	background: black;
+}
