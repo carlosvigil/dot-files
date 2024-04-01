@@ -1,0 +1,64 @@
+{
+	"wlr/taskbar": {
+		"on-click": "activate",
+		"on-click-middle": "close"
+	},
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"on-click": "activate",
+		"on-scroll-up": "hyprctl dispatch workspace e-1",
+		"on-scroll-down": "hyprctl dispatch workspace e+1"
+	},
+	"hyprland/window": {
+		"rotate": 90,
+		"align": 1,
+		"max-length": 80,
+		"seperate-outputs": true
+	},
+	"clock": {
+		"interval": 1,
+		"format": "{:%H \n%M \n%S }"
+	},
+	"clock#2": {
+		"interval": 28800,
+		"format": "{: %a\n%h\n %d}",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+	},
+	"custom/weather": {
+		"rotate": 90,
+		"exec": "~/.config/waybar/wittr.sh",
+		"return-type": "json",
+		"format": "{}",
+		"tooltip": true,
+		"interval": 900
+	},
+	"memory": {
+		"format": "{avail:0.1f}\nGB"
+	},
+	"wireplumber": {
+		"max-volume": 100,
+		"scroll-step": 2,
+		"on-click": "m2-mute.sh",
+		"on-click-right": "ncpamixer",
+		"format": "{volume} \n {icon}",
+		"format-bluetooth": "{volume} \n{icon}",
+		"format-muted": "",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				"",
+				""
+			]
+		}
+	},
+	"network": {
+		"rotate": 90,
+		"format-wifi": "{essid}",
+		"format-ethernet": "{ipaddr}/{cidr} ",
+		"tooltip-format": "{ifname} via {gwaddr} ",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "Disconnected ⚠",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	}
+}

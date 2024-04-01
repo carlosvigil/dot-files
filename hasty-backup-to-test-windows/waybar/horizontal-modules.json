@@ -1,0 +1,47 @@
+{
+	"clock": {
+		"interval": 1,
+		"format": "{: %H %M %S}"
+	},
+	"clock#2": {
+		"interval": 28800,
+		"format": "{:%a %h %d}",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+	},
+	"custom/weather": {
+		"exec": "~/.config/waybar/wittr.sh",
+		"return-type": "json",
+		"format": "{}",
+		"tooltip": true,
+		"interval": 900
+	},
+	"memory": {
+		"format": "{avail:0.1f} GB"
+	},
+	"wireplumber": {
+		"align": 1,
+		"max-volume": 100,
+		"scroll-step": 2,
+		"on-click": "m2-mute.sh",
+		"on-click-right": "ncpamixer",
+		"format": "{volume} {icon}",
+		"format-bluetooth": "{volume} {icon}",
+		"format-muted": "",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				"",
+				""
+			]
+		}
+	},
+	"network": {
+		"format-wifi": "{essid}",
+		"format-ethernet": "{ipaddr}/{cidr} ",
+		"tooltip-format": "{ifname} via {gwaddr} ",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "Disconnected ⚠",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	}
+}

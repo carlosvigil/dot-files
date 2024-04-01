@@ -1,0 +1,53 @@
+set shell /run/current-system/sw/bin/fish
+
+set hidden true
+set mouse true
+set tabstop 3
+set wrapscroll true
+set icons true
+
+map o push %mkdir<space>
+map <a-o> new_folder_with_select 
+map zp toggle_preview
+map C edit_config
+map <c-c> :copy_to_clipboard
+map <enter> shell
+
+cmd copy_to_clipboard %{{
+	if type pbcopy > /dev/null 2>&1; then
+		printf '%s' "$f" | pbcopy
+	elif type xsel > /dev/null 2>&1; then
+		printf '%s' "$f" | xsel -ib
+	fi
+}}
+
+cmd new_folder_with_select ${{
+	set -f
+	printf "Directory name: "
+	read newd
+	mkdir -- "$newd"
+	mv -- $fx "$newd"
+}}
+
+cmd toggle_preview %{{
+	if [ "$lf_preview" = "true" ]; then
+		lf -remote "send $id :set preview false; set ratios 1:5"
+	else
+		lf -remote "send $id :set preview true; set ratios 1:3:5"
+	fi
+}}
+
+cmd edit_config ${{
+	$EDITOR ~/.config/lf/lfrc
+	lf -remote "send $id source ~/.config/lf/lfrc"
+}}
+
+cmd on-cd &{{
+    # '&' commands run silently in background (which is what we want here),
+    # but are not connected to stdout.
+    # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
+    printf "\033]0; $PWD\007" > /dev/tty
+}}
+
+# also run at startup
+on-cd

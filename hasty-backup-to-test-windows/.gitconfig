@@ -1,0 +1,12 @@
+[credential "https://github.com"]
+	helper = !/usr/bin/env gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/env gh auth git-credential
+[user]
+	name = Carlos Vigil
+	email = 18217279+carlosvigil@users.noreply.github.com
+	signingkey = C584BD031A27B5FF
+[core]
+	excludesfile = /home/c/.config/git/ignore
+[commit]
+	gpgsign = true

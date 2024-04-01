@@ -1,0 +1,38 @@
+[global]
+
+layer_indicator = 1
+chord_timeout = 20
+
+
+[main]
+
+s+d = backspace
+d+f = esc
+k+l = enter
+,+. = toggle(nav)
+capslock = overload(control, esc)
+leftshift = overload(shift, backspace)
+space = timeout(space, 200, layer(shift))
+d = timeout(d, 200, layer(nav))
+o = timeout(o, 200, layer(control))
+
+
+[shift]
+
+leftshift = capslock
+rightshift = capslock
+f11 = volumedown
+f12 = volumeup
+
+
+[control+shift]
+
+f1 = toggle(qwerty)
+
+
+[nav]
+
+j = left
+k = down
+i = up
+l = right
