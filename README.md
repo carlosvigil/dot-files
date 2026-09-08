@@ -36,6 +36,7 @@ Keyd is delightfully simple. I've yet to use waybar or look at other options. I
 also haven't bothered with a display/login/session manager. Or a lock yet.  
 — Febuary 2nd, 2024
 
+Back on Mac. Tried Ghostty, remained with kitty. Aerospace replaced yabai. Moved to more rust based tools: uv, tlrc, zellij (replacing tmux), yazi (lf/ranger), mise (asdf). Began using agents. Maybe it's time to learn rust.
 
 ## TODO:
 - fix current waybar
