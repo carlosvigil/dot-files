@@ -1,78 +1,21 @@
-# CONFIG FOR FISH
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+fzf --fish | source
+zoxide init fish | source
 
-if status is-interactive
-	function fish_greeting
-		echo (date)
-	end
-	
-	# ## ALIASES
-	# alias v nvim
-	# alias h hx
-	# set -gx FISHCON "$HOME/.config/fish/config.fish"
-	# alias sofish 'source $HOME/.config/fish/config.fish'
-	
-	# ### DIRECTORIES
-	# alias desk 'cd $HOME/Desktop'
-	# alias mellc 'cd $HOME/local/MELLC-metarepo'
-	
-	# ### BREW
-	# # alias bup 'brew update; brew upgrade'
-	
-	## COLORS
-	fish_config theme choose "Rosé Pine"
-	
-	## FZF
-	set -Ux FZF_DEFAULT_OPTS "
-		--color=fg:#908caa,bg:#191724,hl:#ebbcba
-		--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
-		--color=border:#403d52,header:#31748f,gutter:#191724
-		--color=spinner:#f6c177,info:#9ccfd8,separator:#403d52
-		--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
-	
-	# Preview file content using bat (https://github.com/sharkdp/bat)
-	set -gx FZF_CTRL_T_OPTS "
-		--preview 'bat -n --color=always {}'
-		--bind 'ctrl-/:change-preview-window(down|hidden|)'"
-	
-	# CTRL-/ to toggle small preview window to see the full command
-	# CTRL-Y to copy the command into clipboard using pbcopy
-	set -gx FZF_CTRL_R_OPTS "
-		--preview 'echo {}' --preview-window up:3:hidden:wrap
-		--bind 'ctrl-/:toggle-preview'
-		--bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
-		--color header:italic
-		--header 'Press CTRL-Y to copy command into clipboard'"
-	
-	# Print tree structure in the preview window
-	set -gx FZF_ALT_C_OPTS "--preview 'tree -C {}'"
-	
-end
+# Voice Narration Controls
+alias voice-on="touch ~/.gemini/voice_enabled; and echo 'Voice narration enabled'"
+alias voice-off="rm -f ~/.gemini/voice_enabled; and pkill -x afplay 2>/dev/null; and pkill -x say 2>/dev/null; and echo 'Voice narration disabled'"
+alias voice-toggle="test -e ~/.gemini/voice_enabled; and voice-off; or voice-on"
+alias shh="~/.gemini/config/scripts/kokoro_daemon.py stop 2>/dev/null; pkill -x afplay 2>/dev/null; pkill -x say 2>/dev/null; and echo 'Silenced'"
+alias voice-full="~/.gemini/config/scripts/kokoro_daemon.py mode full"
+alias voice-summary="~/.gemini/config/scripts/kokoro_daemon.py mode summary"
+alias voice-mode="~/.gemini/config/scripts/kokoro_daemon.py mode"
 
-## VARS
-set -gx GOPATH "$HOME/go"
-set -gx CARGO_BIN "$HOME/.cargo/bin"
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-
-# set -gx EDITOR $(which hx)
-set -gx HELIX_RUNTIME $HOME/.config/helix/runtime
-
-set -gx GEMINI_API_KEY _REDACTED_
-
-# set -gx ASDF_DIR $HOME/.asdf
-# source $HOME/.asdf/asdf.fish
-# source $HOME/.asdf/completions/asdf.fish
-# source $HOME/.asdf/plugins/golang/set-env.fish
-
-## PATHS
-if not string match -q -- $GOPATH $PATH
-	set -gx PATH "$GOPATH" $PATH
-	set -gx PATH "$GOPATH/bin" $PATH
-end
-
-if not string match -q -- $CARGO_BIN $PATH
-	set -gx PATH "$CARGO_BIN" $PATH
-end
-
-if not string match -q -- $PNPM_HOME $PATH
-	set -gx PATH "$PNPM_HOME" $PATH
-end
+# Voice Persona Switches
+alias voice-night="~/.gemini/config/scripts/kokoro_daemon.py switch nicole 1.25; and echo 'Switched to Late-Night Partner (Nicole @ 1.25x)'"
+alias voice-latenight="voice-night"
+alias voice-day="~/.gemini/config/scripts/kokoro_daemon.py switch emma 1.18; and echo 'Switched to Primary Companion (Emma @ 1.18x)'"
+alias voice-emma="voice-day"
+alias voice-george="~/.gemini/config/scripts/kokoro_daemon.py switch george 1.15; and echo 'Switched to Sole Backup (George @ 1.15x)'"
+alias voice-status="~/.gemini/config/scripts/kokoro_daemon.py status"
+alias voice-voices="~/.gemini/config/scripts/kokoro_daemon.py voices"

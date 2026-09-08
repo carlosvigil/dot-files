@@ -1,0 +1,86 @@
+{
+  "user_preference_profile": {
+    "acoustic_tolerances": {
+      "sibilance_intolerance": true,
+      "vocal_fatigue_intolerance": true,
+      "tonal_preference": "Grounded midrange warmth, low acoustic pressure, no high-frequency piercing or harsh consonants",
+      "eliminated_voices": [
+        {
+          "id": "af_bella",
+          "name": "Isabella",
+          "reason": "Severe high-frequency sibilance (itchy in ears)"
+        },
+        {
+          "id": "af_lily",
+          "name": "Lily",
+          "reason": "Creaky, aged vocal texture causing listening strain"
+        },
+        {
+          "id": "af_alice",
+          "name": "Alice",
+          "reason": "Pitch instability and jarring variance at elevated speeds"
+        },
+        {
+          "id": "af_sky",
+          "name": "Sky",
+          "reason": "Lost head-to-head evaluation against Daniel and Emma; synthetic vocal fry"
+        },
+        {
+          "id": "am_michael",
+          "name": "Michael",
+          "reason": "Initial favorite on brief prompts, but caused severe vocal fatigue over long technical narratives due to forward projection and heavy vowel sustain"
+        }
+      ]
+    },
+    "pacing_and_cognitive_bandwidth": {
+      "baseline_reference": "215 wpm (macOS Siri baseline)",
+      "philosophy": "High cognitive bandwidth user. Rather than speeding up agitated voices, optimal pairing uses composed, articulate voices gently accelerated so they deliver dense information cleanly without ear fatigue.",
+      "pacing_rules": {
+        "composed_british_voices": {
+          "speed_range": "1.15x - 1.18x",
+          "exemplar": "bf_emma (1.18x), bm_george (1.15x), bm_daniel (1.15x)"
+        },
+        "intimate_soft_voices": {
+          "speed_range": "1.35x",
+          "exemplar": "af_nicole (1.35x)",
+          "rationale": "Breathy, low sound pressure allows higher speed throughput without cognitive strain or disturbance during quiet hours"
+        }
+      }
+    },
+    "tested_foreign_language_baselines": {
+      "spanish": {
+        "primary_recommendation": {
+          "id": "em_alex",
+          "speed": 1.05,
+          "name": "Alex",
+          "notes": "Warm, natural Spanish male with pleasant chest resonance; distinctly preferred over Dora"
+        },
+        "evaluated_alternatives": [
+          {
+            "id": "ef_dora",
+            "speed": 1.05,
+            "name": "Dora",
+            "notes": "Melodious and clear, but Alex was favored for technical narrative warmth"
+          }
+        ]
+      },
+      "french": {
+        "primary_recommendation": {
+          "id": "ff_siwis",
+          "speed": 1.0,
+          "name": "Siwis",
+          "notes": "Expressive Parisian French female, natural cadence at 1.00x, handles elisions and nasal vowels smoothly"
+        }
+      }
+    },
+    "hardware_and_execution_environment": {
+      "hardware": "Apple M4 Silicon",
+      "architecture": "MLX Metal",
+      "model": "mlx-community/Kokoro-82M-bf16",
+      "real_time_factor": "~0.07 (14x faster than real-time)",
+      "memory_footprint": "~1,015 MB RSS unified memory",
+      "latency": "~210 ms for short alerts (20 words), ~570 ms for conversational digests (55 words)",
+      "architecture_pattern": "Persistent background Unix socket daemon (~/.gemini/kokoro.sock) to eliminate the ~2.8s Metal JIT compilation cold start"
+    }
+  }
+}

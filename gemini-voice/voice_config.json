@@ -1,0 +1,31 @@
+{
+  "active_voice": "bf_emma",
+  "active_speed": 1.18,
+  "voices": {
+    "emma": {
+      "id": "bf_emma",
+      "speed": 1.18,
+      "name": "Emma",
+      "accent": "British Female",
+      "role": "Primary Companion",
+      "description": "Composed, articulate British female with zero sibilance strain"
+    },
+    "nicole": {
+      "id": "af_nicole",
+      "speed": 1.35,
+      "name": "Nicole",
+      "accent": "American Female",
+      "role": "Late-Night Coding Partner",
+      "description": "Soft, breathy, intimate American female for quiet hours"
+    },
+    "george": {
+      "id": "bm_george",
+      "speed": 1.15,
+      "name": "George",
+      "accent": "British Male",
+      "role": "Sole Backup Runner-Up",
+      "description": "Polished and distinguished British male"
+    }
+  },
+  "read_mode": "summary"
+}

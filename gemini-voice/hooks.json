@@ -1,0 +1,11 @@
+{
+  "voice-alert": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "/Users/cv/.gemini/config/scripts/voice_alert.py",
+        "timeout": 10
+      }
+    ]
+  }
+}
